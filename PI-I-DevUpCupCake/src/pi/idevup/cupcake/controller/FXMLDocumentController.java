@@ -109,7 +109,7 @@ public class FXMLDocumentController implements Initializable {
             String mdpCrypte = crypt.cryptWithMD5(password.getText());
             Client c = new Client(username.getText(), email.getText(), mdpCrypte.toString(),firstname.getText(), lastname.getText(), phone.getText(), town.getText(), address.getText(), postalcode.getText(), lab.getText(), facebook.getText());
             ServiceClientBd serv = new ServiceClientBd();
-            serv.insererPersonne(c);
+            serv.insererClient(c);
             username.setText("");
             email.setText("");
             firstname.setText("");

@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class ServiceClientBd {
     static DataSource ds = DataSource.getInstance();
     
-     public  void insererPersonne(Client c) {
+     public  void insererClient(Client c) {
         try {
             //  try {
         // Statement ste = ds.getConnection().createStatement();
