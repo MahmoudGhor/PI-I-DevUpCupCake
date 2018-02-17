@@ -35,7 +35,7 @@ public class ServiceSysdate {
                // list.add( new Personne (rs.getString"nom",rs.getString"prenom))
            }
             } catch (SQLException ex) {
-            Logger.getLogger(ServiceClientBd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceUserBd.class.getName()).log(Level.SEVERE, null, ex);
         }
        
        return  datee;

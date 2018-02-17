@@ -10,6 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pi.idevup.cupcake.entities.Patissier;
+import pi.idevup.cupcake.entities.User;
+import pi.idevup.cupcake.services.ServicePatisserieBd;
+import pi.idevup.cupcake.services.ServiceUserBd;
 
 /**
  *
@@ -19,7 +23,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/AddPasty.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -31,7 +35,13 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+       launch(args);
+//     //User u = new Patissier("a", "a", "a", "a", "a", "a", "a", "a", "1", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a");
+//      Patissier p = new Patissier("a", "a", "a", "a", "a", "a", "a", "a", "1", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a");
+//    //  ServicePatisserieBd.insererUser(u);
+//
+//ServicePatisserieBd.insertPatissier(p);
+//   
     }
     
 }

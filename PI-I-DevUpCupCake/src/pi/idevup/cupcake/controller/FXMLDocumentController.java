@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import pi.idevup.cupcake.services.ServiceClientBd;
+import pi.idevup.cupcake.services.ServiceUserBd;
 import pi.idevup.cupcake.services.serviceCryptage;
 
 /**
@@ -106,10 +107,9 @@ public class FXMLDocumentController implements Initializable {
         {
             System.out.println("eee");
             serviceCryptage crypt = new serviceCryptage();
-            String mdpCrypte = crypt.cryptWithMD5(password.getText());
+            String mdpCrypte = serviceCryptage.cryptWithMD5(password.getText());
             Client c = new Client(username.getText(), email.getText(), mdpCrypte.toString(),firstname.getText(), lastname.getText(), phone.getText(), town.getText(), address.getText(), postalcode.getText(), lab.getText(), facebook.getText());
-            ServiceClientBd serv = new ServiceClientBd();
-            serv.insererClient(c);
+            ServiceUserBd.insererUser(c);
             username.setText("");
             email.setText("");
             firstname.setText("");

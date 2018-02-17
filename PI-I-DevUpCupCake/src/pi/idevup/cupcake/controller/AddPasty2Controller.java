@@ -8,11 +8,14 @@ package pi.idevup.cupcake.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
@@ -33,8 +36,10 @@ public class AddPasty2Controller implements Initializable {
     private Label phonel;
     @FXML
     private JFXButton signin;
+    
     @FXML
     private JFXTextField website;
+    
     @FXML
     private JFXTextField facebook;
     @FXML
@@ -81,9 +86,76 @@ public class AddPasty2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+     String specialite="";
+     String service="";
+     String moyensDePayment="";
+     String exigence="";
 
     @FXML
     private void signIn(ActionEvent event) {
+      //  if((!"".equals(website.getText())) && (!"".equals(facebook.getText())) && (!"".equals(latitude.getText())) && (!"".equals(longitude.getText()))){
+         
+            if(sale.isSelected()){
+                specialite+= "sale ";
+            }
+             if(sucre.isSelected()){
+                specialite+= "sucre ";
+            }
+             System.out.println(specialite);
+             
+            if(livraison.isSelected()){
+                service+="livraison ";
+            }
+             if(Reservation.isSelected()){
+                service+= "reservation ";
+            }
+              if(importer.isSelected()){
+                service+= "importer ";
+            }
+               if(autre.isSelected()){
+                service+= "autre ";
+            }
+               if(espece.isSelected()){
+                   moyensDePayment+="espece ";
+               }
+               if(carteBanquaire.isSelected()){
+                   moyensDePayment+="carte Banquaire ";
+               }
+                if(cheque.isSelected()){
+                   moyensDePayment+="cheque ";
+               }
+                if(withOutSucre.isSelected()){
+                   exigence+="Sans Sucre ";
+               }
+                if(withOutGluten.isSelected()){
+                   exigence+="Sans Gluten ";
+               }
+                System.out.println(specialite);
+                System.out.println(service);
+                System.out.println(moyensDePayment);
+                System.out.println(exigence);
+               
+       // }
+    }
+
+
+    @FXML
+    private void retourPage(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pi/idevup/cupcake/GUI/AddPasty.fxml"));
+        try {
+            Parent root =loader.load();
+           
+                        retour.getScene().setRoot(root);
+
+            
+        } catch (IOException e) {
+        }           
+    }
+
+
+
+    @FXML
+    private void selectPic(ActionEvent event) {
     }
 
     @FXML
@@ -123,19 +195,11 @@ public class AddPasty2Controller implements Initializable {
     }
 
     @FXML
-    private void retourPage(ActionEvent event) {
-    }
-
-    @FXML
     private void selectWithOutSucre(ActionEvent event) {
     }
 
     @FXML
     private void selectWithOutGluten(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectPic(ActionEvent event) {
     }
     
 }
