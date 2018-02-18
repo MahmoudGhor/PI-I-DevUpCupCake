@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pi.idevup.cupcake.entities.Patissier;
 import pi.idevup.cupcake.entities.User;
 import pi.idevup.cupcake.services.ServicePatisserieBd;
@@ -23,10 +24,11 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/AddPasty.fxml"));
+        
+         Parent root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/SplashScreen.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
     }

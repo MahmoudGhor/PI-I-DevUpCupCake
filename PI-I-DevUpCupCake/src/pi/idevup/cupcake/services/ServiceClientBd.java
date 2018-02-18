@@ -6,11 +6,14 @@
 package pi.idevup.cupcake.services;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pi.idevup.cupcake.connectionBD.DataSource;
 import pi.idevup.cupcake.entities.Client;
+import pi.idevup.cupcake.main.Main;
 
 /**
  *
@@ -32,4 +35,40 @@ public class ServiceClientBd {
          }
          
      }
+     
+     
+            public boolean searchClientByEmail(String mail)
+     {
+         
+         try {
+         Statement ste = ds.getConnection().createStatement();
+         String req = "select * from user where email='"+mail+"'";
+         ResultSet rs =ste.executeQuery(req);
+           while (rs.next()) {
+              return true;
+           }
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       return  false;
+     }
+            
+            public boolean searchClientByUserName(String username)
+     {
+         
+         try {
+         Statement ste = ds.getConnection().createStatement();
+         String req = "select * from user where username='"+username+"'";
+         ResultSet rs =ste.executeQuery(req);
+           while (rs.next()) {
+              return true;
+           }
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       return  false;
+     }
+     
 }
