@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.idevup.cupcake.controller.UpdateProfilePatissierController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="538.0" prefWidth="749.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="pi.idevup.cupcake.controller.UpdateProfilePatissierController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="1.0" prefHeight="538.0" prefWidth="751.0">
+         <children>
+            <ImageView fx:id="picId" fitHeight="165.0" fitWidth="209.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="updatPic" layoutX="41.0" layoutY="182.0" prefHeight="25.0" prefWidth="123.0" text="Changer Photo" />
+            <JFXTextField fx:id="firstname" labelFloat="true" layoutX="256.0" layoutY="76.0" promptText="First Name" />
+            <JFXTextField fx:id="lastname" labelFloat="true" layoutX="256.0" layoutY="128.0" promptText="Last Name" />
+            <JFXTextField fx:id="phone" labelFloat="true" layoutX="513.0" layoutY="28.0" promptText="Phone" />
+            <JFXTextField fx:id="town" labelFloat="true" layoutX="513.0" layoutY="76.0" promptText="Town" />
+            <Label fx:id="worktimel" layoutX="536.0" layoutY="234.0" text="Heures De Travail:" />
+            <Label fx:id="dayoff" layoutX="535.0" layoutY="307.0" text="Jour de Repos" />
+            <JFXTextField fx:id="address" labelFloat="true" layoutX="509.0" layoutY="128.0" prefHeight="25.0" prefWidth="143.0" promptText="Adresse" />
+            <JFXCheckBox fx:id="lundi" layoutX="520.0" layoutY="328.0" text="Lundi" />
+            <JFXCheckBox fx:id="mardi" layoutX="520.0" layoutY="357.0" text="Mardi" />
+            <JFXCheckBox fx:id="vendredi" layoutX="644.0" layoutY="328.0" text="Vendredi" />
+            <JFXCheckBox fx:id="samedi" layoutX="644.0" layoutY="358.0" text="Samedi" />
+            <JFXCheckBox fx:id="mercredi" layoutX="520.0" layoutY="384.0" text="Mercredi" />
+            <JFXCheckBox fx:id="jeudi" layoutX="520.0" layoutY="413.0" text="Jeudi" />
+            <JFXCheckBox fx:id="dimanche" layoutX="644.0" layoutY="386.0" text="Dimanche" />
+            <Label fx:id="worktimel1" layoutX="499.0" layoutY="268.0" prefHeight="17.0" prefWidth="24.0" text="De" />
+            <Label fx:id="worktimel11" layoutX="618.0" layoutY="268.0" prefHeight="17.0" prefWidth="14.0" text="à" />
+            <JFXTextField fx:id="codepostal" labelFloat="true" layoutX="512.0" layoutY="188.0" prefHeight="25.0" prefWidth="135.0" promptText="Code Postal" />
+            <JFXTextField fx:id="namePasty" labelFloat="true" layoutX="257.0" layoutY="28.0" promptText="Nom de Patisserie" />
+            <JFXTimePicker fx:id="timeStart" defaultColor="#c61f01f5" layoutX="522.0" layoutY="260.0" prefHeight="25.0" prefWidth="90.0" />
+            <JFXTimePicker fx:id="timeEnd" defaultColor="#c61f01" layoutX="635.0" layoutY="258.0" prefHeight="25.0" prefWidth="90.0" />
+            <Label fx:id="lastnamel" layoutX="56.0" layoutY="313.0" text="Specialité" />
+            <Label fx:id="maill" layoutX="59.0" layoutY="401.0" text="Service" />
+            <Label fx:id="pwdl" layoutX="56.0" layoutY="458.0" />
+            <Label fx:id="phonel" layoutX="266.0" layoutY="189.0" text="Moyens de payement " />
+            <JFXTextField fx:id="website" labelFloat="true" layoutX="45.0" layoutY="218.0" promptText="Website" />
+            <JFXTextField fx:id="facebook" labelFloat="true" layoutX="45.0" layoutY="264.0" promptText="Facebook" />
+            <JFXCheckBox fx:id="sale" layoutX="40.0" layoutY="336.0" text="Salé" />
+            <JFXCheckBox fx:id="sucre" layoutX="40.0" layoutY="361.0" prefHeight="18.0" prefWidth="73.0" text="Sucré" />
+            <JFXCheckBox fx:id="livraison" layoutX="23.0" layoutY="426.0" text="Livraison" />
+            <JFXCheckBox fx:id="Reservation" layoutX="22.0" layoutY="454.0" prefHeight="18.0" prefWidth="95.0" text="Reservation" />
+            <JFXCheckBox fx:id="importer" layoutX="128.0" layoutY="427.0" text="Importer" />
+            <JFXCheckBox fx:id="autre" layoutX="128.0" layoutY="455.0" prefHeight="18.0" prefWidth="73.0" text="Autre" />
+            <JFXCheckBox fx:id="espece" layoutX="266.0" layoutY="217.0" text="Espéce" />
+            <JFXCheckBox fx:id="carteBanquaire" layoutX="266.0" layoutY="239.0" prefHeight="18.0" prefWidth="124.0" text="Carte Banquire" />
+            <JFXCheckBox fx:id="cheque" layoutX="356.0" layoutY="217.0" prefHeight="18.0" prefWidth="73.0" text="Chéque" />
+            <JFXCheckBox fx:id="withOutSucre" layoutX="265.0" layoutY="313.0" text="Sans Sucre" />
+            <JFXCheckBox fx:id="withOutGluten" layoutX="265.0" layoutY="337.0" prefHeight="18.0" prefWidth="124.0" text="Sans gluten" />
+            <JFXTextField fx:id="latitude" labelFloat="true" layoutX="267.0" layoutY="401.0" promptText="Latitude" />
+            <JFXTextField fx:id="longitude" labelFloat="true" layoutX="268.0" layoutY="450.0" promptText="Longitude" />
+            <Label fx:id="website1" layoutX="259.0" layoutY="286.0" prefHeight="17.0" prefWidth="135.0" text="Exigence" />
+            <JFXButton fx:id="retour" layoutX="556.0" layoutY="486.0" onAction="#retourAffiche" prefHeight="25.0" prefWidth="75.0" text="Retour" />
+            <JFXButton fx:id="ok" layoutX="644.0" layoutY="486.0" onAction="#enregistrer" prefHeight="25.0" prefWidth="75.0" text="Enregistrer" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

@@ -11,10 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import pi.idevup.cupcake.entities.Patissier;
-import pi.idevup.cupcake.entities.User;
-import pi.idevup.cupcake.services.ServicePatisserieBd;
-import pi.idevup.cupcake.services.ServiceUserBd;
 
 /**
  *

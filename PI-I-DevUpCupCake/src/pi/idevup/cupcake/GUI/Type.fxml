@@ -24,7 +24,7 @@
             <Glow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="372.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="patissierPic" fitHeight="150.0" fitWidth="200.0" layoutX="372.0" layoutY="99.0" onMouseClicked="#signUpPastry" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/patissier.png" />
          </image>
@@ -41,7 +41,7 @@
             <Font name="Blackadder ITC" size="31.0" />
          </font>
       </Label>
-      <Label layoutX="353.0" layoutY="245.0" text="Patissié">
+      <Label fx:id="patissierBtn" layoutX="353.0" layoutY="245.0" onMouseClicked="#signUpPastry" text="Patissié">
          <font>
             <Font name="Blackadder ITC" size="35.0" />
          </font>

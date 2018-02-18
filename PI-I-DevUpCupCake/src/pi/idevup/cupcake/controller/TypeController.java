@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -29,6 +30,10 @@ public class TypeController implements Initializable {
 
     @FXML
     private ImageView client;
+    @FXML
+    private ImageView patissierPic;
+    @FXML
+    private Label patissierBtn;
 
     /**
      * Initializes the controller class.
@@ -53,6 +58,22 @@ public class TypeController implements Initializable {
         stage.setScene(scene);
         stage.show();
         client.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void signUpPastry(MouseEvent event) {
+         Parent root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/AddPasty.fxml"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+        
+        Scene scene = new Scene(root);
+        Stage stage  = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        patissierBtn.getScene().getWindow().hide();
     }
     
 }
