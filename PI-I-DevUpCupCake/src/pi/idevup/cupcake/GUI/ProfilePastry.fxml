@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.WorldMapView?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="668.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="pi.idevup.cupcake.controller.ProfilePastryController">
+   <children>
+      <ImageView fx:id="picId" fitHeight="177.0" fitWidth="214.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="namePastry" layoutX="246.0" layoutY="13.0" prefHeight="36.0" prefWidth="166.0" text="l" />
+      <Label fx:id="address" layoutX="248.0" layoutY="50.0" prefHeight="36.0" prefWidth="158.0" text="l" wrapText="true" />
+      <Label fx:id="workTime" layoutX="246.0" layoutY="87.0" prefHeight="36.0" prefWidth="158.0" text="l" wrapText="true" />
+      <Label fx:id="dayOff" layoutX="244.0" layoutY="124.0" prefHeight="36.0" prefWidth="158.0" text="l" />
+      <Label fx:id="phone" layoutX="414.0" layoutY="50.0" prefHeight="36.0" prefWidth="173.0" style="-fx-border-style: #e20f64;" text="l" textFill="#000000db" />
+      <Label fx:id="website" layoutX="414.0" layoutY="85.0" prefHeight="36.0" prefWidth="173.0" text="l" />
+      <Label fx:id="facebbok" layoutX="417.0" layoutY="124.0" prefHeight="36.0" prefWidth="173.0" text="l" />
+      <Label fx:id="specialite" layoutX="22.0" layoutY="210.0" prefHeight="36.0" prefWidth="195.0" text="l" />
+      <Label fx:id="service" layoutX="23.0" layoutY="250.0" prefHeight="36.0" prefWidth="231.0" text="l" />
+      <Label fx:id="meansOfPayment" layoutX="22.0" layoutY="296.0" prefHeight="36.0" prefWidth="310.0" text="l" />
+      <Label fx:id="exigence" layoutX="22.0" layoutY="343.0" lineSpacing="2.0" prefHeight="36.0" prefWidth="250.0" text="l" wrapText="true" />
+      <WorldMapView layoutX="387.0" layoutY="220.0" prefHeight="164.0" prefWidth="241.0" />
+      <JFXButton fx:id="produits" layoutX="14.0" layoutY="427.0" onAction="#consulerProduits" prefHeight="36.0" prefWidth="112.0" text="Mes Produits" />
+      <JFXButton fx:id="ajouterProduits" layoutX="143.0" layoutY="427.0" onAction="#ajoutProduits" prefHeight="36.0" prefWidth="112.0" text="Ajouter Produit" />
+      <JFXButton fx:id="recettes" layoutX="274.0" layoutY="428.0" onAction="#consulterRecettes" prefHeight="36.0" prefWidth="112.0" text="Mes recettes" />
+      <JFXButton fx:id="ajouterRecette" layoutX="391.0" layoutY="427.0" onAction="#ajoutRecette" prefHeight="36.0" prefWidth="112.0" text="Ajouter Recette" />
+      <JFXButton fx:id="update" layoutX="542.0" layoutY="428.0" onAction="#updateProfile" prefHeight="36.0" prefWidth="112.0" text="Modifier Profile" />
+      <Label fx:id="responsable" layoutX="418.0" layoutY="13.0" prefHeight="36.0" prefWidth="166.0" text="l" />
+   </children>
+</AnchorPane>

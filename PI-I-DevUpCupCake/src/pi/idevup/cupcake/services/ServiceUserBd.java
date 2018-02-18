@@ -9,7 +9,9 @@ import pi.idevup.cupcake.connectionBD.DataSource;
 //import crudclient.CrudClient;
 import pi.idevup.cupcake.entities.Client;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pi.idevup.cupcake.entities.User;
@@ -53,8 +55,29 @@ public class ServiceUserBd {
         } catch (SQLException ex) {
             Logger.getLogger(ServiceUserBd.class.getName()).log(Level.SEVERE, null, ex);
         }
-   
+     }
     
+            public static boolean usernameUnique(String username){
         
-}
+          int i=0;
+           try {
+               Statement ste= DataSource.getInstance().getConnection().createStatement();
+               String req= "Select * from user WHERE username='"+username+"'";
+               ResultSet result=ste.executeQuery(req);
+               
+               while(result.next()){
+                 // int id = result.getInt(1); //int id = result.getInt("id");
+                i++;
+                  
+               }
+               
+           } catch (SQLException ex) {
+               Logger.getLogger(ServiceUserBd.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           return i==0;
+            
+        
+        
+    }
+
 }

@@ -35,11 +35,11 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       launch(args);
+      launch(args);
 //     //User u = new Patissier("a", "a", "a", "a", "a", "a", "a", "a", "1", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a");
 //      Patissier p = new Patissier("a", "a", "a", "a", "a", "a", "a", "a", "1", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a");
 //    //  ServicePatisserieBd.insererUser(u);
-//
+      // System.out.println(ServicePatisserieBd.profilePatissier("nasr").get(0));
 //ServicePatisserieBd.insertPatissier(p);
 //   
     }

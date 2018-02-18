@@ -12,8 +12,11 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -28,9 +31,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import pi.idevup.cupcake.entities.Patissier;
 import pi.idevup.cupcake.services.ServicePatisserieBd;
+import pi.idevup.cupcake.services.ServiceUserBd;
 import pi.idevup.cupcake.services.serviceCryptage;
 
 /**
@@ -198,6 +204,9 @@ public class AddPastyController implements Initializable {
     @FXML
     private Label er17;
     String jt;
+    String picture;
+    @FXML
+    private Label er12;
 
     public Label getEr1() {
         return er1;
@@ -318,7 +327,7 @@ public class AddPastyController implements Initializable {
     private JFXTextField namePasty;
     private String namePastybd;
     String dayOFF;
-
+    List<String> listeFile;
     
     public String getUsernamebd() {
         return usernamebd;
@@ -397,7 +406,9 @@ public class AddPastyController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+       listeFile=new ArrayList<>();
+       listeFile.add("*.pnj");
+       listeFile.add("*.jpg");
         valide.setVisible(false);
                                 part2.setVisible(false);
                                 part1.setVisible(true);
@@ -418,6 +429,7 @@ public class AddPastyController implements Initializable {
                                 er16.setVisible(false);
                                 er17.setVisible(false);
                                 er18.setVisible(false);
+                                er12.setVisible(false);
         
     }    
     Map<Integer, String>  jourtravail= new TreeMap<>();
@@ -429,9 +441,9 @@ public class AddPastyController implements Initializable {
     @FXML
     private void nextPage(ActionEvent event) {
    
-        if("".equals(namePasty.getText()))er1.setVisible(true); else er1.setVisible(false);
-        if("".equals(username.getText()))er2.setVisible(true); else er2.setVisible(false);
-     
+        if(("".equals(namePasty.getText())))er1.setVisible(true); else er1.setVisible(false);
+        if(("".equals(username.getText())))er2.setVisible(true); else er2.setVisible(false);
+     if(!ServiceUserBd.usernameUnique(username.getText()))er12.setVisible(true);else er12.setVisible(false);
         if("".equals(firstname.getText()))er3.setVisible(true); else er3.setVisible(false);
         if("".equals(lastname.getText())) er4.setVisible(true); else er4.setVisible(false);
         if("".equals(mail.getText()))er5.setVisible(true);else er5.setVisible(false);
@@ -453,7 +465,7 @@ public class AddPastyController implements Initializable {
 //                                     
                                            
       //  
-              if ( ((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
+            if ( ((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
 
                                       if( lundi.isSelected()){
            jourtravail.put(1,"Lundi");
@@ -481,15 +493,15 @@ public class AddPastyController implements Initializable {
  jourtravail.put(7,"Dimanche");
            }
                              jt =  jourtravail.values().stream().reduce("",(a,b)-> a +" "+b );
-                 townbd=town.getText();
-              mailbd=mail.getText();
+                 townbd=town.getText().replaceFirst(".",(""+town.getText().charAt(0)).toUpperCase());
+              mailbd=mail.getText().toLowerCase();
           usernamebd=username.getText();
-          firstnamebd=firstname.getText();
-          lastnamebd=lastname.getText();
+          firstnamebd=firstname.getText().replaceFirst(".",(""+firstname.getText().charAt(0)).toUpperCase());
+          lastnamebd=lastname.getText().replaceFirst(".",(""+lastname.getText().charAt(0)).toUpperCase());
           phonebd=phone.getText();
           addressbd=address.getText();
           codepostalebd=codepostal.getText();
-          namePastybd=namePasty.getText();
+          namePastybd=namePasty.getText().replaceFirst(".",(""+namePasty.getText().charAt(0)).toUpperCase());
           worktimeStart=timeStart.getEditor().getText();
           worktimeEnd=timeEnd.getEditor().getText();
           serviceCryptage crypt = new serviceCryptage();
@@ -506,38 +518,11 @@ public class AddPastyController implements Initializable {
 //                Patissier pa = new Patissier(usernamebd, mailbd, mailbd, firstnamebd, lastnamebd, phonebd, townbd, addressbd, lastnamebd, phonebd, mailbd, mdp_verif, worktimeEnd, mailbd, usernamebd, usernamebd, mailbd, lastnamebd, worktimeEnd, mailbd, mailbd);
 //                ServicePatisserieBd.insertPatissier(pa);
 //          
-      }
+   }
               
                                              
     }
 
-    @FXML
-    private void selectLundi(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectMardi(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectVendredi(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectSamedi(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectMercredi(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectJeudi(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectDimanche(ActionEvent event) {
-    }
 
     @FXML
     private void signIn(ActionEvent event) {
@@ -565,7 +550,7 @@ public class AddPastyController implements Initializable {
              servicemap.put(4,"autre");
             }
                if(espece.isSelected()){
-                                paymentmap.put(1,"espéce");
+                                paymentmap.put(1,"Espéce");
 
                }
                if(carteBanquaire.isSelected()){
@@ -582,10 +567,10 @@ public class AddPastyController implements Initializable {
                 if(withOutGluten.isSelected()){
              exigencemap.put(2,"sans Gluten");
                }
-             String service =  servicemap.values().stream().reduce("",(a,b)-> a +" "+b );
-             String specialte =  specialmap.values().stream().reduce("",(a,b)-> a +" "+b );
-             String meansOfPayment =  paymentmap.values().stream().reduce("",(a,b)-> a +" "+b );
-             String exigence =  exigencemap.values().stream().reduce("",(a,b)-> a +" "+b );
+             String service =  servicemap.values().stream().reduce("",(a,b)-> a +","+b );
+             String specialte =  specialmap.values().stream().reduce("",(a,b)-> a +","+b );
+             String meansOfPayment =  paymentmap.values().stream().reduce("",(a,b)-> a +","+b );
+             String exigence =  exigencemap.values().stream().reduce("",(a,b)-> a +","+b );
              if("".equals(specialte)) er14.setVisible(true); else er14.setVisible(false);
         if("".equals(service))er15.setVisible(true);else er15.setVisible(false);
         if("".equals(meansOfPayment)) er16.setVisible(true);else er16.setVisible(false);
@@ -595,50 +580,17 @@ public class AddPastyController implements Initializable {
         if("".equals(longitude.getText()))er18.setVisible(true);else er18.setVisible(false);
              System.out.println(service);
              if((!"".equals(specialte))&&(!"".equals(service))&&(!"".equals(meansOfPayment))&&(!"".equals(latitude.getText()))&&(!"".equals(longitude.getText()))){
-                 Patissier p = new Patissier(usernamebd, mailbd, mdp, firstnamebd, lastnamebd, phonebd,townbd,addressbd,codepostalebd,"pic" , facebook.getText(),namePasty.getText(), worktimeEnd, jt, specialte, service, website.getText(), meansOfPayment, exigence, latitude.getText(), longitude.getText() );
+                 Patissier p = new Patissier(usernamebd, mailbd, mdp, firstnamebd, lastnamebd, phonebd,townbd,addressbd,codepostalebd,picture , facebook.getText(),namePasty.getText(), worktimeEnd, jt, specialte, service, website.getText(), meansOfPayment, exigence, latitude.getText(), longitude.getText() );
                  
                  ServicePatisserieBd.insertPatissier(p);
                  
                  System.out.println("ali");
                  
+                 
+                 
              }
     }
 
-    @FXML
-    private void selectSale(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectSucre(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectLivraison(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectReservation(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectImporter(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectAutre(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectEspece(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectCarte(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectCheque(ActionEvent event) {
-    }
 
     @FXML
     private void retourPage(ActionEvent event) {
@@ -648,16 +600,21 @@ public class AddPastyController implements Initializable {
         
     }
 
-    @FXML
-    private void selectWithOutSucre(ActionEvent event) {
-    }
 
     @FXML
-    private void selectWithOutGluten(ActionEvent event) {
-    }
-
-    @FXML
-    private void selectPic(ActionEvent event) {
+    private void selectPic(MouseEvent event) throws MalformedURLException{
+        System.out.println("ali");
+        FileChooser fc = new FileChooser();
+       // System.out.println("0");
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("word file", listeFile));
+       // System.out.println("1");
+        File f = fc.showOpenDialog(null);
+        
+        if (f!=null)
+        {   picture=f.getAbsolutePath();
+            Image image = new Image(f.toURI().toURL().toString());
+            pic.setImage(image) ;
+        }
     }
 
     @FXML
@@ -681,6 +638,7 @@ public class AddPastyController implements Initializable {
          }
        
     }
+
 
 
     

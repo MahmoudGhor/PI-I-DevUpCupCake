@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,4 +54,30 @@ public class ServicePatisserieBd  {
                 
             }
     
+    
+    public static List<String> profilePatissier(String username){
+         List<String> list= new ArrayList<>();
+          
+           try {
+               Statement ste= DataSource.getInstance().getConnection().createStatement();
+               String req= "Select firstname,lastname,pastryname,phone,town,picture,address,worktime,dayoff,specialty,"
+                       + "service,postalcode,website,facebook,meansofpayment,requirement,latitude,longitude from user WHERE username='"+username+"'";
+               ResultSet result=ste.executeQuery(req);
+               
+               while(result.next()){
+                 // int id = result.getInt(1); //int id = result.getInt("id");
+                 for(int i=1;i<19;i++)
+                  list.add( result.getString(i));
+                  
+               }
+               
+           } catch (SQLException ex) {
+               Logger.getLogger(ServicePatisserieBd.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           return list;
+            
+        
+        
+    }
+
 }
