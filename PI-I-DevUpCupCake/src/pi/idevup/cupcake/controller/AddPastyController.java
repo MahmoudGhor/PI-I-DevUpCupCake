@@ -27,6 +27,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -463,7 +465,14 @@ public class AddPastyController implements Initializable {
           if(("".equals(timeEnd.getEditor().getText())) || (timeStart.getEditor().getText().equals("")))
                                  er13.setVisible(true);else er13.setVisible(false);
 //                                     
-                                           
+            if (!ServiceUserBd.mailUnique(mail.getText())) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+alert.setTitle(null);
+alert.setHeaderText("   Mail déja existe");
+alert.setContentText(null);
+
+alert.showAndWait();
+            }                                 
       //  
             if ( (ServiceUserBd.mailUnique(mail.getText())) &&(ServiceUserBd.usernameUnique(username.getText()))&&((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
 
