@@ -465,7 +465,7 @@ public class AddPastyController implements Initializable {
 //                                     
                                            
       //  
-            if ( ((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
+            if ( (ServiceUserBd.mailUnique(mail.getText())) &&(ServiceUserBd.usernameUnique(username.getText()))&&((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
 
                                       if( lundi.isSelected()){
            jourtravail.put(1,"Lundi");

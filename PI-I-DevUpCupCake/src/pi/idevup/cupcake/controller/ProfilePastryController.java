@@ -70,7 +70,7 @@ public class ProfilePastryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<String> liste= ServicePatisserieBd.profilePatissier("nasr");
+        List<String> liste= ServicePatisserieBd.profilePatissier("md.masmoudi");
       responsable.setText("Nom de responsable: "+liste.get(0)+" "+liste.get(1) );
       namePastry.setText("Nom de patesserie: "+liste.get(2));
       address.setText("Mon adresse : "+liste.get(4)+", "+liste.get(6)+", "+liste.get(11));
@@ -120,6 +120,7 @@ public class ProfilePastryController implements Initializable {
 
     @FXML
     private void updateProfile(ActionEvent event) {
+        
         
         
     }

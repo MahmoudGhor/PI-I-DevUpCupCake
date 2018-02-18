@@ -79,5 +79,28 @@ public class ServiceUserBd {
         
         
     }
+              public static boolean mailUnique(String mail){
+        
+          int i=0;
+           try {
+               Statement ste= DataSource.getInstance().getConnection().createStatement();
+               String req= "Select * from user WHERE email='"+mail+"'";
+               ResultSet result=ste.executeQuery(req);
+               
+               while(result.next()){
+                 // int id = result.getInt(1); //int id = result.getInt("id");
+                i++;
+                  
+               }
+               
+           } catch (SQLException ex) {
+               Logger.getLogger(ServiceUserBd.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           return i==0;
+            
+        
+        
+    }
+
 
 }
