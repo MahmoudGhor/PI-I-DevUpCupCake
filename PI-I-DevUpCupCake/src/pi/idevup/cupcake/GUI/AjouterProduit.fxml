@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.idevup.cupcake.controller.AjouterProduitController">
+   <children>
+      <Label layoutX="31.0" layoutY="51.0" text="Nom du produit " />
+      <Label layoutX="222.0" layoutY="14.0" prefHeight="21.0" prefWidth="157.0" text="Ajouter un produit" textFill="#ee408e">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="25.0" layoutY="116.0" prefHeight="17.0" prefWidth="90.0" text="Description" />
+      <Label layoutX="32.0" layoutY="175.0" text="photos" />
+      <Label layoutX="28.0" layoutY="241.0" prefHeight="17.0" prefWidth="75.0" text="Disponibilite" />
+      <Label layoutX="31.0" layoutY="283.0" text="prix" />
+      <TextField fx:id="nom" layoutX="132.0" layoutY="47.0" prefHeight="25.0" prefWidth="212.0" AnchorPane.topAnchor="47.0" />
+      <TextField fx:id="photo" layoutX="136.0" layoutY="171.0" prefHeight="25.0" prefWidth="206.0" />
+      <TextField fx:id="prix" layoutX="133.0" layoutY="271.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextArea fx:id="description" layoutX="133.0" layoutY="100.0" prefHeight="45.0" prefWidth="212.0" />
+      <RadioButton fx:id="disponible_oui" layoutX="132.0" layoutY="241.0" mnemonicParsing="false" onAction="#dispon" prefHeight="17.0" prefWidth="81.0" selected="true" text="Oui">
+         <toggleGroup>
+            <ToggleGroup fx:id="dispo" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="disponible_non" layoutX="223.0" layoutY="241.0" mnemonicParsing="false" onAction="#dispon" text="Non" toggleGroup="$dispo" />
+      <Label layoutX="25.0" layoutY="334.0" prefHeight="17.0" prefWidth="32.0" text="Unite" />
+      <RadioButton fx:id="piece" layoutX="139.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeUnite" selected="true" text="par piece">
+         <toggleGroup>
+            <ToggleGroup fx:id="unite" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="kilogramme" layoutX="242.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeUnite" text="par kilogramme" toggleGroup="$unite" />
+      <RadioButton fx:id="littre" layoutX="368.0" layoutY="334.0" mnemonicParsing="false" onAction="#changeUnite" text="par littre" toggleGroup="$unite" />
+      <Label layoutX="28.0" layoutY="365.0" text="Type" />
+      <RadioButton fx:id="sucre" layoutX="139.0" layoutY="365.0" mnemonicParsing="false" onAction="#changeType" selected="true" text="sucré ">
+         <toggleGroup>
+            <ToggleGroup fx:id="type" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="sale" layoutX="242.0" layoutY="365.0" mnemonicParsing="false" onAction="#changeType" text="salé" toggleGroup="$type" />
+      <RadioButton fx:id="sucreSale" layoutX="368.0" layoutY="365.0" mnemonicParsing="false" onAction="#changeType" text="sucré salé" toggleGroup="$type" />
+      <Button fx:id="upload" layoutX="265.0" layoutY="171.0" mnemonicParsing="false" onAction="#addPictures" prefHeight="25.0" prefWidth="60.0" text="upload">
+         <styleClass>
+            <String fx:value="primary" />
+            <String fx:value="middle" />
+         </styleClass>
+      </Button>
+      <Button fx:id="addP" layoutX="463.0" layoutY="361.0" mnemonicParsing="false" onAction="#addProduit" prefHeight="25.0" prefWidth="75.0" text="Ajouter" />
+      <Button fx:id="plus" layoutX="319.0" layoutY="171.0" mnemonicParsing="false" onAction="#addPic" prefHeight="25.0" prefWidth="26.0" text="+" />
+      <GridPane layoutX="378.0" layoutY="87.0" prefHeight="162.0" prefWidth="182.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fitHeight="81.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Desktop/13946371222337.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="81.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../../../../../../../Desktop/original-baklava.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="view" fitHeight="76.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../../../../Desktop/LogoFinal.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="79.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../../../../Pictures/Saved%20Pictures/1159718055_SadAnimeGirl.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <Label fx:id="champvide4" layoutX="139.0" layoutY="300.0" textFill="#f20909" />
+      <Label fx:id="champvide3" layoutX="139.0" layoutY="200.0" textFill="#f20909" />
+      <Label fx:id="champvide2" layoutX="139.0" layoutY="145.0" textFill="#f20909ad" />
+      <Label fx:id="champvide1" layoutX="139.0" layoutY="72.0" textFill="#f20909" />
+   </children>
+   <effect>
+      <Blend />
+   </effect>
+</AnchorPane>
