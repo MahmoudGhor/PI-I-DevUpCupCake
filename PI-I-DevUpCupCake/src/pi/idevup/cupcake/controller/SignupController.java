@@ -28,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,7 +38,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pi.idevup.cupcake.entities.Client;
 import pi.idevup.cupcake.services.ServiceClientBd;
+import pi.idevup.cupcake.services.serviceCryptage;
 
 /**
  * FXML Controller class
@@ -58,7 +61,8 @@ public class SignupController implements Initializable {
     boolean verificationVille=false;
     boolean verificationAdresse=false;
     boolean verificationCodePostal=false;
-    
+    public String URL ;
+    boolean verificationImage=false;
     
     @FXML
     private AnchorPane pane2;
@@ -226,6 +230,8 @@ public class SignupController implements Initializable {
             view2.setVisible(true);
             view1.setVisible(false);
             labelImage.setText("Cliquez sur l'image pour la changer!");
+            URL=f.getAbsolutePath();
+            verificationImage=true;
         }
         
     }
@@ -245,6 +251,8 @@ public class SignupController implements Initializable {
             view2.setVisible(true);
             view1.setVisible(false);
             labelImage.setText("Cliquez sur l'image pour la changer!");
+            URL=f.getAbsolutePath();
+            verificationImage=true;
         }
     }
 
@@ -387,12 +395,45 @@ public class SignupController implements Initializable {
         {
             verificationCodePostal=true;
         }
-          if ((verifivationEmail==true)&&(verifivationDoubleEmail==true)&&(verificationUserName==true)&&(verificationDoublePassword==true)&&(verificationPassword==true)&&(verificationNumero==true)&&(verificationSexe==true)&&(verificationNom==true)&&(verificationPrenom==true)&&(verificationVille==true)&&(verificationAdresse==true)&&(verificationCodePostal==true))
+          if (verificationImage==false)
           {
-             
+              URL="/pi/idevup/cupcake/GUI/pardefaut.jpg";
+              verificationImage=true;
+          }
+          if ((verifivationEmail==true)&&(verifivationDoubleEmail==true)&&(verificationUserName==true)&&(verificationDoublePassword==true)&&(verificationPassword==true)&&(verificationNumero==true)&&(verificationSexe==true)&&(verificationNom==true)&&(verificationPrenom==true)&&(verificationVille==true)&&(verificationAdresse==true)&&(verificationCodePostal==true)&&(verificationImage==true))
+          {
+              serviceCryptage crypt = new serviceCryptage();
+            String mdpCrypte = crypt.cryptWithMD5(password.getText());
+              Client client = new Client(username.getText(),email.getText(),mdpCrypte,Nom.getText(),Prenom.getText(),Tel.getText(),ville.getValue(),Adresse.getText(), CodePostal.getText() , URL.toString(), facebook.getText());
+              ServiceClientBd serviceClient = new ServiceClientBd();
+              serviceClient.insertClient(client);
+              Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+              alert.setTitle("Inscription avec ressuite");
+                            alert.setHeaderText("reussite");
+                            alert.setContentText("Votre inscription est effectué avec succés");
+                            alert.show();
+                            Parent root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/SignIn.fxml"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+        
+        Scene scene = new Scene(root);
+        Stage stage  = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.show();
+        pane2.getScene().getWindow().hide();
+       
           }
           else 
           {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+               alert.setTitle("Warning");
+                            alert.setHeaderText("Warning");
+                            alert.setContentText("Veillez remplir tous les champs");
+                            alert.show();
              
           }
     }
