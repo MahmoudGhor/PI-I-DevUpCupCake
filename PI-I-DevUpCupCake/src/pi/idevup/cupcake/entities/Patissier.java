@@ -52,7 +52,19 @@ public class Patissier extends User{
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
+ public Patissier(String username, String firstname, String lastname, String phone, String town, String address, String postalcode, String picture, String facebook,String nomPatisserie, String worktime, String dayOff, String speciality, String service, String website, String meansOfPayment, String requirement, String latitude, String longitude) {
+        super( username,  firstname,  lastname,  phone,  town,  address,  postalcode,  picture,  facebook);
+        this.nomPatisserie = nomPatisserie;
+        this.worktime = worktime;
+        this.dayOff = dayOff;
+        this.speciality = speciality;
+        this.service = service;
+        this.website = website;
+        this.meansOfPayment = meansOfPayment;
+        this.requirement = requirement;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
     public String getNomPatisserie() {
         return nomPatisserie;
     }

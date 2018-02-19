@@ -466,7 +466,7 @@ public class AddPastyController implements Initializable {
                                  er13.setVisible(true);else er13.setVisible(false);
 //                                     
             if (!ServiceUserBd.mailUnique(mail.getText())) {
-                Alert alert = new Alert(AlertType.INFORMATION);
+                Alert alert = new Alert(AlertType.ERROR);
 alert.setTitle(null);
 alert.setHeaderText("   Mail déja existe");
 alert.setContentText(null);

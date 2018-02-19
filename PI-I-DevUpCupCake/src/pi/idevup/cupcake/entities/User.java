@@ -42,7 +42,17 @@ public class User {
         this.picture = picture;
         this.facebook = facebook;
     }
-
+ public User(String username, String firstname, String lastname, String phone, String town, String address, String postalcode, String picture, String facebook) {
+        this.username = username;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.town = town;
+        this.address = address;
+        this.postalcode = postalcode;
+        this.picture = picture;
+        this.facebook = facebook;
+    }
     public String getUsername() {
         return username;
     }

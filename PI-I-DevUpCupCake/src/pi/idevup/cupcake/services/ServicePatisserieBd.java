@@ -53,6 +53,24 @@ public class ServicePatisserieBd  {
            
                 
             }
+    public static void updatePatissier(Patissier p, String username){
+         try {
+              Statement  ste = DataSource.getInstance().getConnection().createStatement();
+              String req = "Update user  set firstname='"+p.getFirstname()+"',lastname='"+p.getLastname()+"',phone='"+p.getPhone()+"',town='"+p.getTown()+"', picture='"+p.getPicture()+"'"
+                      + ",address='"+p.getAddress()+"',postalcode='"+p.getPostalcode()+"',facebook='"+p.getFacebook()+"'  ,pastryname='"+p.getNomPatisserie()+"', worktime='"+p.getWorktime()+"',dayoff='"+p.getDayOff()+"',specialty='"+p.getSpeciality()+
+                      "',service='"+p.getService()+"'"+ ",website='"+p.getWebsite()+"',meansofpayment='"+p.getMeansOfPayment()+"',requirement='"+p.getRequirement()+"',latitude='"+ p.getLatitude()+
+                      "',longitude='"+ p.getLongitude()+"' WHERE username='"+username+"'";
+                     
+                      System.out.println("ali++");
+                     
+              ste.executeUpdate(req);
+              // ste.executeQuery(req);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServicePatisserieBd.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Probleme de connexion");
+            }
+        
+    }
     
     
     public static List<String> profilePatissier(String username){
