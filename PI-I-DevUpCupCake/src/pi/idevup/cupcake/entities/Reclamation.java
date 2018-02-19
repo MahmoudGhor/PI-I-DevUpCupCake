@@ -58,6 +58,12 @@ public class Reclamation {
     public void setUserclaimer(String userclaimer) {
         this.userclaimer = userclaimer;
     }
+
+    @Override
+    public String toString() {
+        return "Reclamation{" + "description=" + description + ", claimdate=" + claimdate + ", userclaimed=" + userclaimed + ", userclaimer=" + userclaimer + '}';
+    }
+    
     
     
     
