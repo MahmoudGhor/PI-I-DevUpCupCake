@@ -252,7 +252,7 @@ public class SignupController implements Initializable {
     private void AnnulerClick(MouseEvent event) {
                 Parent root = null;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/SignIn.fxml"));
                         } catch (IOException ex) {
                             Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
                         }
