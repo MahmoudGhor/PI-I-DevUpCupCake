@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.TreeMap;
@@ -30,6 +31,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,6 +39,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import pi.idevup.cupcake.entities.Patissier;
 import pi.idevup.cupcake.services.ServicePatisserieBd;
 import pi.idevup.cupcake.services.ServiceUserBd;
@@ -218,6 +221,8 @@ public class AddPastyController implements Initializable {
     private Label er22;
     @FXML
     private Label er21;
+    @FXML
+    private JFXButton cancel;
 
     public Label getEr1() {
         return er1;
@@ -488,7 +493,7 @@ alert.setContentText(null);
 alert.showAndWait();
             }                                 
       //  
-            if ( (ServiceUserBd.mailUnique(mail.getText())) &&(ServiceUserBd.usernameUnique(username.getText()))&&((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
+            if ((pswd.getText().length()>=6)&&(codepostal.getText().length()==4)&& (codepostal.getText().matches("[^0-9]*[0-9]+[^0-9]*"))&&(phone.getText().length()==8)&& (phone.getText().matches("[^0-9]*[0-9]+[^0-9]*")) &&(ServiceUserBd.mailUnique(mail.getText()))&&(mail.getText().matches("\\w{3,}@\\S+")) && (ServiceUserBd.mailUnique(mail.getText())) &&(ServiceUserBd.usernameUnique(username.getText()))&&((pswd.getText().equals(pswd_verif.getText())) && (!"".equals(firstname.getText())) ) && ( (!"".equals(username.getText()))&& (!"".equals(lastname.getText()))) && ((!"".equals(mail.getText())) && (!"".equals(phone.getText()))) && ((!"".equals(town.getText())) && (!"".equals(address.getText()))) && ((!"".equals(pswd.getText())) && (!"".equals(pswd_verif.getText()))) && ((!"".equals(codepostal.getText())) && (!"".equals(namePasty.getText())))){
 
                                       if( lundi.isSelected()){
            jourtravail.put(1,"Lundi");
@@ -607,7 +612,6 @@ alert.showAndWait();
                  
                  ServicePatisserieBd.insertPatissier(p);
                  
-                 System.out.println("ali");
                  
                  
                  
@@ -687,6 +691,24 @@ alert.showAndWait();
     @FXML
     private void verifMdp(KeyEvent event) {
         if(pswd.getText().length()<6) er20.setVisible(true);else er20.setVisible(false);
+    }
+
+    @FXML
+    private void quitter(ActionEvent event) {
+         
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+        
+        alert.setHeaderText("Vous Voulez quiter notre Application?");
+       
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Stage stage = (Stage) cancel.getScene().getWindow();
+         stage.close();       
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
     }
 
     

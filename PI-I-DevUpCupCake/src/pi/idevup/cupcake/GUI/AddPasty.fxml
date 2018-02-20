@@ -139,13 +139,13 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="part2" prefHeight="545.0" prefWidth="594.0">
+      <AnchorPane fx:id="part2" layoutY="-1.0" prefHeight="545.0" prefWidth="594.0">
          <children>
             <Label fx:id="lastnamel" layoutX="66.0" layoutY="178.0" text="Specialité" />
             <Label fx:id="maill" layoutX="73.0" layoutY="279.0" text="Service" />
             <Label fx:id="pwdl" layoutX="66.0" layoutY="329.0" />
             <Label fx:id="phonel" layoutX="351.0" layoutY="37.0" text="Moyens de payement " />
-            <JFXButton fx:id="signin" layoutX="462.0" layoutY="513.0" onAction="#signIn" prefHeight="32.0" prefWidth="95.0" text="S'inscrire" />
+            <JFXButton fx:id="signin" layoutX="462.0" layoutY="517.0" onAction="#signIn" prefHeight="32.0" prefWidth="95.0" text="S'inscrire" />
             <JFXTextField fx:id="website" labelFloat="true" layoutX="55.0" layoutY="66.0" promptText="Website" />
             <JFXTextField fx:id="facebook" labelFloat="true" layoutX="55.0" layoutY="133.0" promptText="Facebook" />
             <JFXCheckBox fx:id="sale" layoutX="50.0" layoutY="209.0" text="Salé" />
@@ -157,7 +157,7 @@
             <JFXCheckBox fx:id="espece" layoutX="303.0" layoutY="64.0" text="Espéce" />
             <JFXCheckBox fx:id="carteBanquaire" layoutX="388.0" layoutY="65.0" prefHeight="18.0" prefWidth="124.0" text="Carte Banquire" />
             <JFXCheckBox fx:id="cheque" layoutX="510.0" layoutY="65.0" prefHeight="18.0" prefWidth="73.0" text="Chéque" />
-            <JFXButton fx:id="retour" layoutX="365.0" layoutY="513.0" onAction="#retourPage" prefHeight="32.0" prefWidth="95.0" text="&lt; Retour" />
+            <JFXButton fx:id="retour" layoutX="300.0" layoutY="517.0" onAction="#retourPage" prefHeight="32.0" prefWidth="95.0" text="&lt; Retour" />
             <Label fx:id="website1" layoutX="359.0" layoutY="116.0" prefHeight="17.0" prefWidth="135.0" text="Exigence" />
             <JFXCheckBox fx:id="withOutSucre" layoutX="352.0" layoutY="153.0" text="Sans Sucre" />
             <JFXCheckBox fx:id="withOutGluten" layoutX="352.0" layoutY="186.0" prefHeight="18.0" prefWidth="124.0" text="Sans gluten" />
@@ -193,5 +193,6 @@
             </Label>
          </children>
       </AnchorPane>
+      <JFXButton fx:id="cancel" layoutX="399.0" layoutY="522.0" onAction="#quitter" prefHeight="25.0" prefWidth="65.0" text="Quitter" />
    </children>
 </AnchorPane>
