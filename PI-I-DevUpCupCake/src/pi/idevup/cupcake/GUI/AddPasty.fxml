@@ -29,13 +29,13 @@
             <JFXTextField fx:id="username" labelFloat="true" layoutX="55.0" layoutY="81.0" promptText="User Name(*)" />
             <JFXTextField fx:id="firstname" labelFloat="true" layoutX="55.0" layoutY="141.0" promptText="First Name(*)" />
             <JFXTextField fx:id="lastname" labelFloat="true" layoutX="55.0" layoutY="215.0" promptText="Last Name(*)" />
-            <JFXTextField fx:id="mail" labelFloat="true" layoutX="55.0" layoutY="288.0" promptText="E-mail(*)" />
-            <JFXTextField fx:id="phone" labelFloat="true" layoutX="312.0" layoutY="42.0" promptText="Phone(*)" />
+            <JFXTextField fx:id="mail" labelFloat="true" layoutX="55.0" layoutY="288.0" onKeyReleased="#verifMail" promptText="E-mail(*)" />
+            <JFXTextField fx:id="phone" labelFloat="true" layoutX="312.0" layoutY="42.0" onKeyReleased="#verifPhone" promptText="Phone(*)" />
             <JFXTextField fx:id="town" labelFloat="true" layoutX="312.0" layoutY="106.0" promptText="Town(*)" />
             <Label fx:id="worktimel" layoutX="335.0" layoutY="282.0" text="Heures De Travail(*):" />
             <Label fx:id="dayoff" layoutX="334.0" layoutY="347.0" text="Jour de Repos" />
             <JFXTextField fx:id="address" labelFloat="true" layoutX="308.0" layoutY="178.0" prefHeight="25.0" prefWidth="143.0" promptText="Adresse(*)" />
-            <JFXPasswordField fx:id="pswd" labelFloat="true" layoutX="55.0" layoutY="364.0" promptText="Password(*)" />
+            <JFXPasswordField fx:id="pswd" labelFloat="true" layoutX="55.0" layoutY="364.0" onKeyReleased="#verifMdp" promptText="Password(*)" />
             <JFXPasswordField fx:id="pswd_verif" labelFloat="true" layoutX="50.0" layoutY="447.0" onKeyReleased="#verifPswd" prefHeight="25.0" prefWidth="150.0" promptText="Conformer Password(*)" />
             <JFXCheckBox fx:id="lundi" layoutX="319.0" layoutY="368.0" text="Lundi" />
             <JFXCheckBox fx:id="mardi" layoutX="319.0" layoutY="397.0" text="Mardi" />
@@ -46,7 +46,7 @@
             <JFXCheckBox fx:id="dimanche" layoutX="443.0" layoutY="426.0" text="Dimanche" />
             <Label fx:id="worktimel1" layoutX="298.0" layoutY="305.0" prefHeight="17.0" prefWidth="24.0" text="De" />
             <Label fx:id="worktimel11" layoutX="417.0" layoutY="305.0" prefHeight="17.0" prefWidth="14.0" text="à" />
-            <JFXTextField fx:id="codepostal" labelFloat="true" layoutX="311.0" layoutY="235.0" prefHeight="25.0" prefWidth="135.0" promptText="Code Postal(*)" />
+            <JFXTextField fx:id="codepostal" labelFloat="true" layoutX="311.0" layoutY="235.0" onKeyReleased="#verifCodePostal" prefHeight="25.0" prefWidth="135.0" promptText="Code Postal(*)" />
             <JFXTextField fx:id="namePasty" labelFloat="true" layoutX="56.0" layoutY="29.0" promptText="Nom de Patisserie(*)" />
             <JFXTimePicker fx:id="timeStart" defaultColor="#c61f01f5" layoutX="321.0" layoutY="297.0" prefHeight="25.0" prefWidth="90.0" />
             <JFXTimePicker fx:id="timeEnd" defaultColor="#c61f01" layoutX="434.0" layoutY="295.0" prefHeight="25.0" prefWidth="90.0" />
@@ -112,6 +112,26 @@
                </font>
             </Label>
             <ImageView fx:id="valide2" fitHeight="18.0" fitWidth="14.0" layoutX="207.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="er19" layoutX="56.0" layoutY="322.0" prefHeight="17.0" prefWidth="157.0" text="*E-mail invalide" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er20" layoutX="58.0" layoutY="396.0" prefHeight="17.0" prefWidth="157.0" text="*6 caractéres minimum" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er22" layoutX="314.0" layoutY="263.0" prefHeight="17.0" prefWidth="157.0" text="*4 chiffres" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er21" layoutX="312.0" layoutY="73.0" prefHeight="17.0" prefWidth="157.0" text="*8 chiffres" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
             <Label fx:id="er12" layoutX="56.0" layoutY="110.0" prefHeight="17.0" prefWidth="159.0" text="*Insérer un autre Nom d'Utilisateur" textFill="#ff0505">
                <font>
                   <Font size="10.0" />
@@ -119,7 +139,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="part2" layoutX="14.0" layoutY="13.0">
+      <AnchorPane fx:id="part2" prefHeight="545.0" prefWidth="594.0">
          <children>
             <Label fx:id="lastnamel" layoutX="66.0" layoutY="178.0" text="Specialité" />
             <Label fx:id="maill" layoutX="73.0" layoutY="279.0" text="Service" />

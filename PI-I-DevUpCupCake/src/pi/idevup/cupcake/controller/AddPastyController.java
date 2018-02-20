@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -209,6 +210,14 @@ public class AddPastyController implements Initializable {
     String picture;
     @FXML
     private Label er12;
+    @FXML
+    private Label er19;
+    @FXML
+    private Label er20;
+    @FXML
+    private Label er22;
+    @FXML
+    private Label er21;
 
     public Label getEr1() {
         return er1;
@@ -432,6 +441,11 @@ public class AddPastyController implements Initializable {
                                 er17.setVisible(false);
                                 er18.setVisible(false);
                                 er12.setVisible(false);
+                                er19.setVisible(false);
+                                er20.setVisible(false);
+                                er21.setVisible(false);
+                                er22.setVisible(false);
+                                
         
     }    
     Map<Integer, String>  jourtravail= new TreeMap<>();
@@ -647,6 +661,36 @@ alert.showAndWait();
          }
        
     }
+
+    @FXML
+    private void verifMail(KeyEvent event) {
+        if((!ServiceUserBd.mailUnique(mail.getText()))&&(!mail.getText().matches("\\w{3,}@\\S+")))
+            er19.setVisible(true);
+        else 
+                        er19.setVisible(false);
+
+        
+    }
+
+    @FXML
+    private void verifPhone(KeyEvent event) {
+        if((phone.getText().length()==8)&& (phone.getText().matches("[^0-9]*[0-9]+[^0-9]*"))) er21.setVisible(false);
+        else er21.setVisible(true);
+    }
+
+    @FXML
+    private void verifCodePostal(KeyEvent event) {
+        if((codepostal.getText().length()==4)&& (codepostal.getText().matches("[^0-9]*[0-9]+[^0-9]*"))) er22.setVisible(false);
+        else er22.setVisible(true);
+    }
+
+    @FXML
+    private void verifMdp(KeyEvent event) {
+        if(pswd.getText().length()<6) er20.setVisible(true);else er20.setVisible(false);
+    }
+
+    
+    
 
 
 
