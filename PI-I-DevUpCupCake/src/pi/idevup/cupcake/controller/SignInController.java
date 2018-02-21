@@ -189,7 +189,7 @@ public class SignInController implements Initializable {
             if (us.Gettype(uname).equals("a:1{i:0;s:10:\"ROLE_CLIENT\";}")) {
                 System.out.println("hello Cl");
                 username.getScene().getWindow().hide();
-                loadWindow(getClass().getResource("/Views/FXMLClient.fxml"), "Client", null);
+                loadWindow(getClass().getResource("/pi/idevup/cupcake/GUI/interfaceClient.fxml"), "Client", null);
 
             }
             if ((us.Gettype(uname)).equals("a:1{i:0;s:10:\"ROLE_PAST\";}")) {
