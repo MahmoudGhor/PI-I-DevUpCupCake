@@ -23,9 +23,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -38,7 +41,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.entities.Client;
+import pi.idevup.cupcake.entities.Mailing;
 import pi.idevup.cupcake.services.ServiceClientBd;
 import pi.idevup.cupcake.services.serviceCryptage;
 
@@ -334,7 +340,7 @@ public class SignupController implements Initializable {
     }
 
     @FXML
-    private void save(MouseEvent event) {
+    private void save(MouseEvent event) throws IOException{
         //verification sexe
         if (sexe.getValue()==null)
         {
@@ -412,13 +418,25 @@ public class SignupController implements Initializable {
                             alert.setHeaderText("reussite");
                             alert.setContentText("Votre inscription est effectué avec succés");
                             alert.show();
-                            Parent root = null;
+                           
+                       
+        
+                String to = email.getText();
+                String subject = "Confirmation d'inscription";
+                String message =  "Bienvenu "+Prenom.getText()+" "+Nom.getText()+"dans notre application";
+                
+                String usermail = "pi.dev.esrpit2017@gmail.com";
+                String passmail = "aZERTY123";
+                
+                Mailing.send(to,subject, message, usermail, passmail);
+                showNotif("Bienvenu", "Un mail de bienvenu vous a été envoyer");
+                        
+                 Parent root = null;
                         try {
                             root = FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/SignIn.fxml"));
                         } catch (IOException ex) {
                             Logger.getLogger(SplashScreenController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-        
         Scene scene = new Scene(root);
         Stage stage  = new Stage();
         stage.initStyle(StageStyle.UNDECORATED);
@@ -451,7 +469,24 @@ public class SignupController implements Initializable {
 
     
     
-    
+     
+       void showNotif(String text, String text2) {
+        Notifications notificationBuilder = Notifications.create()
+                .title(text)
+                .text(text2)
+                .graphic(null)
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.TOP_CENTER)
+                .onAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+
+                    }
+                });
+
+        notificationBuilder.darkStyle();
+        notificationBuilder.showConfirm();
+    }
 
 
 }
