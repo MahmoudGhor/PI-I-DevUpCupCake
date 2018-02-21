@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="Homepane" prefHeight="575.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.idevup.cupcake.controller.FXMLHomeController">
+    <children>
+        <Label fx:id="labelhome" layoutX="19.0" layoutY="17.0" prefHeight="29.0" prefWidth="207.0" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #7387A8;" text="Home" />
+        <Separator fx:id="sep" layoutX="3.0" layoutY="55.0" prefHeight="5.0" prefWidth="902.0" />
+        <VBox fx:id="vboxx" layoutX="38.0" layoutY="84.0" prefHeight="513.0" prefWidth="861.0" spacing="50.0">
+            <children>
+                <HBox fx:id="hbx" prefHeight="128.0" prefWidth="972.0" spacing="16.0">
+                    <children>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #00C0EF;" />
+                                <VBox layoutX="106.0" layoutY="17.0">
+                                    <children>
+                                        <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="MESSAGES" />
+                                        <Label fx:id="messageL" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #F39C12;" />
+                                <VBox layoutX="106.0" layoutY="17.0">
+                                    <children>
+                                        <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Alerts" />
+                                        <Label fx:id="Label2" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #DD4B39;" />
+                                <VBox layoutX="106.0" layoutY="17.0">
+                                    <children>
+                                        <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Likes" />
+                                        <Label fx:id="Label3" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="999999" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                  <Pane layoutX="10.0" layoutY="10.0" prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                     <children>
+                        <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #8807C0EF;" />
+                        <VBox layoutX="106.0" layoutY="17.0">
+                           <children>
+                              <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Comments" />
+                              <Label fx:id="messageL1" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                    </children>
+                </HBox>
+                <HBox fx:id="hbxx" prefHeight="128.0" prefWidth="955.0" spacing="16.0">
+                    <children>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #00C0EF; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #009ABF;" />
+                                <VBox layoutX="93.0" layoutY="12.0" prefHeight="105.0" prefWidth="185.0" spacing="10.0">
+                                    <children>
+                                        <VBox prefHeight="54.0" prefWidth="155.0">
+                                            <children>
+                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;" text="Messages" />
+                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
+                                            </children>
+                                            <padding>
+                                                <Insets left="10.0" />
+                                            </padding>
+                                        </VBox>
+                                        <ProgressBar minHeight="-Infinity" opacity="0.78" prefHeight="5.0" prefWidth="182.0" progress="0.54" styleClass="custom-progress-bar" />
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="70 % increase" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #F39C12; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #C37D0E;" />
+                                <VBox layoutX="93.0" layoutY="12.0" prefHeight="105.0" prefWidth="185.0" spacing="10.0">
+                                    <children>
+                                        <VBox prefHeight="54.0" prefWidth="155.0">
+                                            <children>
+                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;" text="Uploads" />
+                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
+                                            </children>
+                                            <padding>
+                                                <Insets left="10.0" />
+                                            </padding>
+                                        </VBox>
+                                        <ProgressBar minHeight="-Infinity" opacity="0.78" prefHeight="5.0" prefWidth="182.0" progress="0.77" styleClass="custom-progress-bar" />
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="70 % increase" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #DD4B39; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #B13C2E;" />
+                                <VBox layoutX="93.0" layoutY="12.0" prefHeight="105.0" prefWidth="185.0" spacing="10.0">
+                                    <children>
+                                        <VBox prefHeight="54.0" prefWidth="155.0">
+                                            <children>
+                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;" text="Likes" />
+                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
+                                            </children>
+                                            <padding>
+                                                <Insets left="10.0" />
+                                            </padding>
+                                        </VBox>
+                                        <ProgressBar minHeight="-Infinity" opacity="0.78" prefHeight="5.0" prefWidth="182.0" progress="0.36" styleClass="custom-progress-bar" />
+                                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="70 % increase" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </Pane>
+                    </children>
+                </HBox>
+                <HBox fx:id="hbxxx" prefHeight="128.0" prefWidth="1164.0" spacing="16.0">
+                    <children>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #00C0EF; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane layoutY="101.0" prefHeight="27.0" prefWidth="203.0" style="-fx-background-color: #009ABF;">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="1.0" prefHeight="25.0" prefWidth="194.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="More Info" />
+                                    </children>
+                                </Pane>
+                                <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
+                                    <children>
+                                        <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                                        <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Infectionner" />
+                                    </children>
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #F39C12; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane layoutY="101.0" prefHeight="27.0" prefWidth="203.0" style="-fx-background-color: #C37D0E;">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="1.0" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="More Info" />
+                                    </children>
+                                </Pane>
+                                <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
+                                    <children>
+                                        <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                                        <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Clients" />
+                                    </children>
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </Pane>
+                        <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #DD4B39; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                            <children>
+                                <Pane layoutY="101.0" prefHeight="27.0" prefWidth="203.0" style="-fx-background-color: #B13C2E;">
+                                    <children>
+                                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="1.0" prefHeight="20.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="More Info" />
+                                    </children>
+                                </Pane>
+                                <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
+                                    <children>
+                                        <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                                        <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Product Added" />
+                                    </children>
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </Pane>
+                  <Pane layoutX="10.0" layoutY="10.0" prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: #00C0EF; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
+                     <children>
+                        <Pane layoutY="101.0" prefHeight="27.0" prefWidth="204.0" style="-fx-background-color: #009ABF;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" prefHeight="25.0" prefWidth="126.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #F0F0F0;" text="More Info" />
+                           </children>
+                        </Pane>
+                        <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
+                           <children>
+                              <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                              <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Recipe Added" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+      
+    </children>
+</AnchorPane>

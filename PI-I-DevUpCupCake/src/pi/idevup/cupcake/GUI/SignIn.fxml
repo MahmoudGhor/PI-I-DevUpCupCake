@@ -22,17 +22,17 @@
             <Font name="Blackadder ITC" size="29.0" />
          </font>
       </Label>
-      <JFXTextField focusColor="#ababab" labelFloat="true" layoutX="350.0" layoutY="131.0" prefHeight="27.0" prefWidth="195.0" promptText="Nom d'utilisateur" unFocusColor="#a8a8a8">
+      <JFXTextField fx:id="username" focusColor="#ababab" labelFloat="true" layoutX="350.0" layoutY="131.0" prefHeight="27.0" prefWidth="195.0" promptText="Nom d'utilisateur" unFocusColor="#a8a8a8">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField focusColor="#ababab" labelFloat="true" layoutX="350.0" layoutY="198.0" prefHeight="27.0" prefWidth="195.0" promptText="Mot de passe" unFocusColor="#a8a8a8">
+      <JFXPasswordField fx:id="password" focusColor="#ababab" labelFloat="true" layoutX="350.0" layoutY="198.0" prefHeight="27.0" prefWidth="195.0" promptText="Mot de passe" unFocusColor="#a8a8a8">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </JFXPasswordField>
-      <JFXButton buttonType="RAISED" layoutX="336.0" layoutY="306.0" prefHeight="27.0" prefWidth="128.0" ripplerFill="#eb3843" style="-fx-background-color: #EB3843;" text="JE SUIS CUPCACKER" textAlignment="CENTER" textFill="WHITE">
+      <JFXButton fx:id="login" buttonType="RAISED" layoutX="336.0" layoutY="306.0" onAction="#handleLoginButtonAction" prefHeight="27.0" prefWidth="128.0" ripplerFill="#eb3843" style="-fx-background-color: #EB3843;" text="JE SUIS CUPCACKER" textAlignment="CENTER" textFill="WHITE">
          <effect>
             <DropShadow />
          </effect>
