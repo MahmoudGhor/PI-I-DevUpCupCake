@@ -8,9 +8,88 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="641.0" prefWidth="1103.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.idevup.cupcake.controller.InterfaceClientController">
    <children>
+      <AnchorPane layoutX="350.0" layoutY="-4.0" prefHeight="648.0" prefWidth="754.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="754.0">
+               <children>
+                  <Pane layoutX="1.0" layoutY="80.0" prefHeight="120.0" prefWidth="756.0" style="-fx-background-color: #EB3843;">
+                     <children>
+                        <Pane layoutX="605.0" layoutY="70.0" prefHeight="45.0" prefWidth="146.0" style="-fx-border-color: #FFFFFF;">
+                           <children>
+                              <JFXButton fx:id="ModifierProfil" layoutX="-13.0" layoutY="7.0" onMouseClicked="#modifierProfilClick" prefHeight="38.0" prefWidth="142.0" text="Modifier Profil" textAlignment="RIGHT" textFill="WHITE">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </JFXButton>
+                              <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="115.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/edit.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Label fx:id="FirstLastName" layoutX="269.0" layoutY="48.0" prefHeight="47.0" prefWidth="142.0" text="Ali ben Ali" textFill="WHITE">
+                           <font>
+                              <Font name="Gill Sans MT Ext Condensed Bold" size="33.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <JFXTextField layoutX="57.0" layoutY="26.0" prefHeight="25.0" prefWidth="233.0" promptText="Rechercher patisserie , client ..." />
+               </children>
+            </Pane>
+            <ImageView fx:id="imageProfil" fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
+            <Pane fx:id="paneflux" layoutX="2.0" layoutY="598.0" prefHeight="47.0" prefWidth="754.0" style="-fx-background-color: #E0E0E0;">
+               <children>
+                  <Text fx:id="jtext" disable="true" focusTraversable="true" layoutX="-439.0" layoutY="13.0" lineSpacing="1.0" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1236.13671875">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Text>
+               </children></Pane>
+            <AnchorPane fx:id="anchorModif" layoutX="14.0" layoutY="258.0" prefHeight="337.0" prefWidth="739.0">
+               <children>
+                  <JFXButton fx:id="showInformationPersonnelle" layoutX="43.0" layoutY="26.0" onMouseClicked="#informationPersonnelleClick" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #C90000;" text="Information personnelle" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="showInformationPersonnelle1" layoutX="251.0" layoutY="26.0" onMouseClicked="#informationCompteClick" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #C90000;" text="Information lié au compte" textFill="WHITE">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <AnchorPane fx:id="anchorInformationLieAuCompte" layoutY="68.0" prefHeight="269.0" prefWidth="739.0">
+                     <children>
+                        <JFXButton fx:id="btnChangerEmail" layoutX="24.0" layoutY="34.0" prefHeight="31.0" prefWidth="200.0" text="Changer mon Email" />
+                        <JFXTextField fx:id="Email" focusColor="#ababab" layoutX="310.0" layoutY="35.0" prefHeight="27.0" prefWidth="257.0" promptText="Email" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="anchorInformationPersonnelle" layoutX="10.0" layoutY="66.0" prefHeight="269.0" prefWidth="719.0">
+                     <children>
+                        <JFXTextField fx:id="prenom" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="200.0" promptText="Prenom" />
+                        <JFXTextField fx:id="nom" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="96.0" prefHeight="25.0" prefWidth="200.0" promptText="Nom" />
+                        <JFXTextField fx:id="numeroTel" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="159.0" prefHeight="25.0" prefWidth="200.0" promptText="Numero" />
+                        <JFXTextField fx:id="adresse" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="40.0" prefHeight="25.0" prefWidth="222.0" promptText="Adresse" />
+                        <JFXTextField fx:id="codePostal" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="96.0" prefHeight="25.0" prefWidth="222.0" promptText="Code Postal" />
+                        <JFXTextField fx:id="Facebook" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="222.0" promptText="Facebook" />
+                        <JFXButton fx:id="enregistrerInformationPersonnelle" layoutX="551.0" layoutY="230.0" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #EB9D80;" text="Enregistrer" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="annulerInformationPersonnelle" layoutX="429.0" layoutY="230.0" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #EB9D80;" text="Annuler" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="641.0" prefWidth="295.0" style="-fx-background-color: #EB3843;">
          <children>
             <Pane prefHeight="136.0" prefWidth="352.0" style="-fx-background-color: #EB3843;">
@@ -36,43 +115,11 @@
             </ImageView>
             <JFXButton layoutX="10.0" layoutY="270.0" prefHeight="55.0" prefWidth="328.0" text="Mes Commandes" textFill="WHITE" />
             <JFXButton layoutX="14.0" layoutY="334.0" prefHeight="55.0" prefWidth="328.0" text="Contacter Administrateur" textFill="WHITE" />
+            <JFXButton fx:id="Deconnexion" layoutX="10.0" layoutY="584.0" onMouseClicked="#deconnection" prefHeight="55.0" prefWidth="328.0" text="Deconnexion" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </JFXButton>
          </children></AnchorPane>
-      <AnchorPane layoutX="350.0" layoutY="-4.0" prefHeight="648.0" prefWidth="754.0">
-         <children>
-            <Pane prefHeight="200.0" prefWidth="754.0">
-               <children>
-                  <Pane layoutX="1.0" layoutY="80.0" prefHeight="120.0" prefWidth="756.0" style="-fx-background-color: #EB3843;">
-                     <children>
-                        <Pane layoutX="605.0" layoutY="70.0" prefHeight="45.0" prefWidth="146.0" style="-fx-border-color: #FFFFFF;">
-                           <children>
-                              <JFXButton layoutX="-13.0" layoutY="7.0" prefHeight="38.0" prefWidth="142.0" text="Modifier Profil" textAlignment="RIGHT" textFill="WHITE">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </JFXButton>
-                              <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="115.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/edit.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Label layoutX="269.0" layoutY="48.0" prefHeight="47.0" prefWidth="142.0" text="Ali ben Ali" textFill="WHITE">
-                           <font>
-                              <Font name="Gill Sans MT Ext Condensed Bold" size="33.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <JFXTextField layoutX="57.0" layoutY="26.0" prefHeight="25.0" prefWidth="233.0" promptText="Rechercher patisserie , client ..." />
-               </children>
-            </Pane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/pardefaut.jpg" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

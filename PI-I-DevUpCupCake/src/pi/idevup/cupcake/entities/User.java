@@ -31,6 +31,7 @@ public class User {
     private String picture;
     private String facebook;
     private String banneddate;
+    public static String uName;
 
     public User() {
     }
@@ -84,6 +85,18 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
     }
+
+    public User(String email, String firstname, String lastname, String phone, String town, String address, String postalcode, String facebook) {
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.town = town;
+        this.address = address;
+        this.postalcode = postalcode;
+        this.facebook = facebook;
+    }
+        
 
     public String getUsername() {
         return username;

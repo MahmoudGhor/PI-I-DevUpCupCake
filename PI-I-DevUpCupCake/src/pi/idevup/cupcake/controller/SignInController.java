@@ -36,6 +36,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import pi.idevup.cupcake.connectionBD.Session;
 import pi.idevup.cupcake.entities.User;
 import pi.idevup.cupcake.services.UserService;
 import pi.idevup.cupcake.services.serviceCryptage;
@@ -184,9 +185,11 @@ public class SignInController implements Initializable {
                 ancor.getScene().setRoot(root);*/
 
             }
-            System.out.println("Role du "+uname+"est"+us.Gettype(uname));
-            System.out.println(us.Gettype(us.Gettype(uname)).equals("a:1{i:0;s:10:\"ROLE_CLIENT\";}"));
             if (us.Gettype(uname).equals("a:1{i:0;s:10:\"ROLE_CLIENT\";}")) {
+               // Session.LoggedUser = (Session.iuserService.UserByLogin(login.getText()));
+               // System.out.println(Session.LoggedUser.getLastname());
+               User.uName=uname;
+                System.out.println(User.uName);
                 System.out.println("hello Cl");
                 username.getScene().getWindow().hide();
                 loadWindow(getClass().getResource("/pi/idevup/cupcake/GUI/interfaceClient.fxml"), "Client", null);

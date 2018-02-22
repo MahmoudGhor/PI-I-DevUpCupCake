@@ -15,6 +15,14 @@ public class Client extends User {
         super(username, email, password, firstname, lastname, phone, town, address, postalcode, picture, facebook);
     }
 
+    public Client() {
+    }
+
+    public Client(String email, String firstname, String lastname, String phone, String town, String address, String postalcode, String facebook) {
+        super(email, firstname, lastname, phone, town, address,postalcode, facebook);
+    
+    }
+
     @Override
     public String toString() {
         return "Client{" +super.toString()+ '}';
