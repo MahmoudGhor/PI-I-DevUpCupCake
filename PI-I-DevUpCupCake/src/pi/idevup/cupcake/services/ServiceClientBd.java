@@ -149,5 +149,54 @@ public class ServiceClientBd {
         
        
 }
+               public void updateClientInfoPersonnelle(Client c , String username) {
+        try {
+            System.out.println(c.getPicture());
+         Statement ste = ds.getConnection().createStatement();
+         String req = "update user set firstname='"+c.getFirstname()+"',lastname='"+c.getLastname()+"',phone='"+c.getPhone()+"',town='"+c.getTown()+"',address='"+c.getAddress()+"',postalcode='"+c.getPostalcode()+"',facebook='"+c.getFacebook()+"'  where username='"+username+"'";
+         ste.executeUpdate(req);
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+}
+               
+                     public void updateMailClient(Client c , String username) {
+        try {
+            System.out.println(c.getPicture());
+         Statement ste = ds.getConnection().createStatement();
+         String req = "update user set email='"+c.getEmail()+"'  where username='"+username+"'";
+         ste.executeUpdate(req);
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+}
+                     
+         public boolean verifMotDePasseExistant(String pwd , String username)
+         {
+             String pass="";
+         try {
+         Statement ste = ds.getConnection().createStatement();
+         String req = "select password from user where username='"+username+"'";
+         ResultSet rs =ste.executeQuery(req);
+         while (rs.next()) {
+              pass = rs.getString(1);
+              if (pass.equals(pwd))
+              {
+                  return true;
+              }
+                             }
+            }
+         catch (SQLException ex) {
+             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+       
+                        return  false;
+     
+                         
+                     }
      
 }

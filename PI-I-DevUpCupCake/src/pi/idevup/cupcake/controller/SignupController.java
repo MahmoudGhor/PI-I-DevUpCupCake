@@ -46,6 +46,7 @@ import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.entities.Client;
 import pi.idevup.cupcake.entities.Mailing;
 import pi.idevup.cupcake.services.ServiceClientBd;
+import pi.idevup.cupcake.services.ServiceNotification;
 import pi.idevup.cupcake.services.serviceCryptage;
 
 /**
@@ -429,7 +430,7 @@ public class SignupController implements Initializable {
                 String passmail = "aZERTY123";
                 
                 Mailing.send(to,subject, message, usermail, passmail);
-                showNotif("Bienvenu", "Un mail de bienvenu vous a été envoyer");
+                ServiceNotification.showNotif("Bienvenu", "Un mail de bienvenu vous a été envoyer");
                         
                  Parent root = null;
                         try {
@@ -470,23 +471,23 @@ public class SignupController implements Initializable {
     
     
      
-       void showNotif(String text, String text2) {
-        Notifications notificationBuilder = Notifications.create()
-                .title(text)
-                .text(text2)
-                .graphic(null)
-                .hideAfter(Duration.seconds(5))
-                .position(Pos.TOP_CENTER)
-                .onAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-
-                    }
-                });
-
-        notificationBuilder.darkStyle();
-        notificationBuilder.showConfirm();
-    }
+//       void showNotif(String text, String text2) {
+//        Notifications notificationBuilder = Notifications.create()
+//                .title(text)
+//                .text(text2)
+//                .graphic(null)
+//                .hideAfter(Duration.seconds(5))
+//                .position(Pos.TOP_CENTER)
+//                .onAction(new EventHandler<ActionEvent>() {
+//                    @Override
+//                    public void handle(ActionEvent event) {
+//
+//                    }
+//                });
+//
+//        notificationBuilder.darkStyle();
+//        notificationBuilder.showConfirm();
+//    }
 
 
 }

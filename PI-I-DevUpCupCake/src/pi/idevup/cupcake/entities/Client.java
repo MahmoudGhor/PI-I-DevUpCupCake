@@ -22,6 +22,16 @@ public class Client extends User {
         super(email, firstname, lastname, phone, town, address,postalcode, facebook);
     
     }
+    
+    public Client(String firstname, String lastname, String phone, String town, String address, String postalcode, String facebook) {
+        super(firstname, lastname, phone, town, address,postalcode, facebook);
+    
+    }
+     public Client(String email) {
+        super(email);
+    
+    }
+    
 
     @Override
     public String toString() {

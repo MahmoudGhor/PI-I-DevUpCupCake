@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -56,35 +58,48 @@
                      <font>
                         <Font name="System Italic" size="14.0" />
                      </font></JFXButton>
-                  <JFXButton fx:id="showInformationPersonnelle1" layoutX="251.0" layoutY="26.0" onMouseClicked="#informationCompteClick" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #C90000;" text="Information lié au compte" textFill="WHITE">
+                  <JFXButton fx:id="showInformationCompte" layoutX="251.0" layoutY="26.0" onMouseClicked="#informationCompteClick" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #C90000;" text="Information lié au compte" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="14.0" />
                      </font>
                   </JFXButton>
                   <AnchorPane fx:id="anchorInformationLieAuCompte" layoutY="68.0" prefHeight="269.0" prefWidth="739.0">
                      <children>
-                        <JFXButton fx:id="btnChangerEmail" layoutX="24.0" layoutY="34.0" prefHeight="31.0" prefWidth="200.0" text="Changer mon Email" />
-                        <JFXTextField fx:id="Email" focusColor="#ababab" layoutX="310.0" layoutY="35.0" prefHeight="27.0" prefWidth="257.0" promptText="Email" />
+                        <JFXButton fx:id="btnChangerEmail" layoutX="24.0" layoutY="34.0" onMouseClicked="#buttonToChangeMail" prefHeight="31.0" prefWidth="200.0" style="-fx-background-color: F7D497;" text="Changer mon Email" />
+                        <JFXTextField fx:id="EmailActuelle" focusColor="#ababab" layoutX="310.0" layoutY="35.0" prefHeight="27.0" prefWidth="257.0" promptText="Email" />
+                        <JFXButton fx:id="ChangerMailButton" layoutX="583.0" layoutY="44.0" onMouseClicked="#ChangerMailButtonSave" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #EB9D80;" text="Enregistrer" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnChangerMotDePasse" layoutX="22.0" layoutY="128.0" onMouseClicked="#buttonToChangePassword" prefHeight="31.0" prefWidth="200.0" style="-fx-background-color: F7D497;" text="Changer mon Mot de Passe" />
+                        <JFXPasswordField fx:id="passwordActuelle" focusColor="#ababab" labelFloat="true" layoutX="305.0" layoutY="127.0" onKeyReleased="#VerifPasswordActuelle" prefHeight="28.0" prefWidth="200.0" promptText="Entrer votre mot de passe actuelle" />
+                        <JFXButton fx:id="annulerInformationCompte" layoutX="438.0" layoutY="226.0" onMouseClicked="#AnnulerInforCompte" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #EB9D80;" text="Annuler" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="anchorInformationPersonnelle" layoutX="10.0" layoutY="66.0" prefHeight="269.0" prefWidth="719.0">
+                  <AnchorPane fx:id="anchorInformationPersonnelle" layoutX="10.0" layoutY="64.0" prefHeight="269.0" prefWidth="719.0">
                      <children>
                         <JFXTextField fx:id="prenom" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="200.0" promptText="Prenom" />
                         <JFXTextField fx:id="nom" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="96.0" prefHeight="25.0" prefWidth="200.0" promptText="Nom" />
-                        <JFXTextField fx:id="numeroTel" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="159.0" prefHeight="25.0" prefWidth="200.0" promptText="Numero" />
+                        <JFXTextField fx:id="numeroTel" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="159.0" onKeyTyped="#OnlyNumberPhone" prefHeight="25.0" prefWidth="200.0" promptText="Numero" />
                         <JFXTextField fx:id="adresse" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="40.0" prefHeight="25.0" prefWidth="222.0" promptText="Adresse" />
-                        <JFXTextField fx:id="codePostal" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="96.0" prefHeight="25.0" prefWidth="222.0" promptText="Code Postal" />
+                        <JFXTextField fx:id="codePostal" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="96.0" onKeyTyped="#OnlyNumberCodePostal" prefHeight="25.0" prefWidth="222.0" promptText="Code Postal" />
                         <JFXTextField fx:id="Facebook" focusColor="#ababab" labelFloat="true" layoutX="475.0" layoutY="159.0" prefHeight="25.0" prefWidth="222.0" promptText="Facebook" />
-                        <JFXButton fx:id="enregistrerInformationPersonnelle" layoutX="551.0" layoutY="230.0" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #EB9D80;" text="Enregistrer" textFill="WHITE">
+                        <JFXButton fx:id="enregistrerInformationPersonnelle" layoutX="551.0" layoutY="230.0" onMouseClicked="#EnregistrerInfoPersonnelle" prefHeight="25.0" prefWidth="146.0" style="-fx-background-color: #EB9D80;" text="Enregistrer" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton fx:id="annulerInformationPersonnelle" layoutX="429.0" layoutY="230.0" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #EB9D80;" text="Annuler" textFill="WHITE">
+                        <JFXButton fx:id="annulerInformationPersonnelle" layoutX="429.0" layoutY="230.0" onMouseClicked="#Annuler" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #EB9D80;" text="Annuler" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </JFXButton>
+                        <JFXComboBox fx:id="ville" focusColor="#ababab" labelFloat="true" layoutX="14.0" layoutY="218.0" prefHeight="25.0" prefWidth="200.0" promptText="Ville" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>

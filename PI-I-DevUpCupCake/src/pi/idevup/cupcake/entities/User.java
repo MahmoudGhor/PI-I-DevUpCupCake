@@ -96,6 +96,22 @@ public class User {
         this.postalcode = postalcode;
         this.facebook = facebook;
     }
+    
+    public User(String firstname, String lastname, String phone, String town, String address, String postalcode, String facebook) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.town = town;
+        this.address = address;
+        this.postalcode = postalcode;
+        this.facebook = facebook;
+    }
+
+    public User(String email) {
+        this.email = email;
+    }
+    
+    
         
 
     public String getUsername() {
