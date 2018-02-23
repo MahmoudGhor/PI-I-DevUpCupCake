@@ -157,9 +157,16 @@ public class InterfaceClientController implements Initializable {
     timeline.play();
     
         
-        
-    Image image = new Image("file:"+servClient.getImageClient(User.uName));
-        imageProfil.setImage(image);
+        Image im;
+        try {
+            //Image image = new Image("file:"+servClient.getImageClient(User.uName));
+             im = servClient.getImage2(User.uName);
+        } catch (IOException ex) {
+            Logger.getLogger(InterfaceClientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    im =new Image("file:photo.jpg",imageProfil.getFitWidth(),imageProfil.getFitHeight(),true,true);
+    imageProfil.setImage(im);
+    //imageProfil.setImage(image);
         FirstLastName.setText(servClient.getInfoClient(User.uName).getFirstname()+" "+servClient.getInfoClient(User.uName).getLastname());
                 
    

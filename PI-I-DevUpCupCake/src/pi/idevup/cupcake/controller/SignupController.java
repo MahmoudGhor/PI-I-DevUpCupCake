@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.sun.org.apache.xerces.internal.util.URI;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -129,6 +131,8 @@ public class SignupController implements Initializable {
     private JFXTextField CodePostal;
     @FXML
     private JFXTextField facebook;
+    FileInputStream fis = null;
+    File f=null;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pane2.setVisible(false);
@@ -224,10 +228,10 @@ public class SignupController implements Initializable {
     }
 
     @FXML
-    private void ChargeImage(MouseEvent event) throws MalformedURLException{
+    private void ChargeImage(MouseEvent event) throws MalformedURLException, FileNotFoundException{
          FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("word file", lstFile));
-       File f = fc.showOpenDialog(null);
+        f = fc.showOpenDialog(null);
         
         if (f!=null)
         {
@@ -236,6 +240,7 @@ public class SignupController implements Initializable {
             view2.setImage(image) ;
             view2.setVisible(true);
             view1.setVisible(false);
+            fis = new FileInputStream(f);
             labelImage.setText("Cliquez sur l'image pour la changer!");
             URL=f.getAbsolutePath();
             verificationImage=true;
@@ -244,11 +249,11 @@ public class SignupController implements Initializable {
     }
 
     @FXML
-    private void ChangeImage(MouseEvent event) throws MalformedURLException{
+    private void ChangeImage(MouseEvent event) throws MalformedURLException, FileNotFoundException{
         
            FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("word file", lstFile));
-       File f = fc.showOpenDialog(null);
+       f = fc.showOpenDialog(null);
         
         if (f!=null)
         {
@@ -257,6 +262,7 @@ public class SignupController implements Initializable {
             view2.setImage(image) ;
             view2.setVisible(true);
             view1.setVisible(false);
+            fis = new FileInputStream(f);
             labelImage.setText("Cliquez sur l'image pour la changer!");
             URL=f.getAbsolutePath();
             verificationImage=true;
@@ -413,7 +419,7 @@ public class SignupController implements Initializable {
             String mdpCrypte = crypt.cryptWithMD5(password.getText());
               Client client = new Client(username.getText(),email.getText(),mdpCrypte,Nom.getText(),Prenom.getText(),Tel.getText(),ville.getValue(),Adresse.getText(), CodePostal.getText() , URL.toString(), facebook.getText());
               ServiceClientBd serviceClient = new ServiceClientBd();
-              serviceClient.insertClient(client);
+              serviceClient.insertClient(client,f,fis);
               Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
               alert.setTitle("Inscription avec ressuite");
                             alert.setHeaderText("reussite");

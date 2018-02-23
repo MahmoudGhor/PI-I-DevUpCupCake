@@ -5,12 +5,20 @@
  */
 package pi.idevup.cupcake.services;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.image.Image;
 import pi.idevup.cupcake.connectionBD.DataSource;
 import pi.idevup.cupcake.entities.Client;
 import pi.idevup.cupcake.main.Main;
@@ -22,7 +30,7 @@ import pi.idevup.cupcake.main.Main;
 public class ServiceClientBd {
      static  DataSource ds= DataSource.getInstance();
      
-     public static void insertClient(Client c){
+     public static void insertClient(Client c,File file , FileInputStream fis){
         
          try {
           System.out.println(c.getUsername());
@@ -40,7 +48,8 @@ public class ServiceClientBd {
          ste1.setString(7, c.getLastname());
          ste1.setString(8, c.getPhone());
          ste1.setString(9, c.getTown());
-         ste1.setString(10, c.getPicture());
+         ste1.setBinaryStream(10, fis , (int)file.length());
+         //ste1.setString(10, c.getPicture());
          ste1.setString(11, c.getAddress());
          ste1.setString(12, c.getPostalcode());
          ste1.setString(13, c.getFacebook());
@@ -198,5 +207,34 @@ public class ServiceClientBd {
      
                          
                      }
-     
+         
+         public Image getImage2 (String nom )throws FileNotFoundException, IOException 
+        {
+            Image image=null;
+         try {
+         Statement ste = ds.getConnection().createStatement();
+         String req = "select picture from user where username='"+nom+"'";
+         ResultSet rs =ste.executeQuery(req);
+           while (rs.next()) {
+              InputStream is = rs.getBinaryStream(1);
+               OutputStream os = new FileOutputStream(new File("photo.jpg"));
+               byte[] contents = new byte[1024];
+               int size=0;
+               while ((size = is.read(contents))!=-1)
+               {
+                os.write(contents,0,size);
+               }
+               return image;//=new Image("file:photo.jpg",imageview2.getFitWidth(),imageview2.getFitHeight(),true,true);
+              // imageview2.setImage(image);
+               
+           }
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return image;
+       
 }
+}
+         
+     
+
