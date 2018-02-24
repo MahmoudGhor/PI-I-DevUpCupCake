@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="edu.esprit.cupcake.GUI.ModifierProduitController">
+   <children>
+      <ImageView fitHeight="410.0" fitWidth="652.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../icons/bcbd538994a2449549b470c97b8b819a.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="244.0" layoutY="19.0" prefHeight="21.0" prefWidth="157.0" text="Modifier Produit" textFill="#111010">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="n" layoutX="190.0" layoutY="58.0" prefHeight="25.0" prefWidth="212.0" />
+      <Label layoutX="83.0" layoutY="62.0" prefHeight="19.0" prefWidth="105.0" text="Nom du produit " textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="127.0" prefHeight="17.0" prefWidth="90.0" text="Description" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="186.0" prefHeight="17.0" prefWidth="44.0" text="photos" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="252.0" prefHeight="19.0" prefWidth="90.0" text="Disponibilite" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="282.0" prefHeight="25.0" prefWidth="26.0" text="prix" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="im" layoutX="194.0" layoutY="182.0" prefHeight="25.0" prefWidth="206.0" />
+      <TextField fx:id="pri" layoutX="191.0" layoutY="282.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextArea fx:id="des" layoutX="191.0" layoutY="111.0" prefHeight="45.0" prefWidth="212.0" />
+      <RadioButton fx:id="disponible_oui" layoutX="190.0" layoutY="252.0" mnemonicParsing="false" onAction="#dispon" prefHeight="17.0" prefWidth="81.0" selected="true" text="Oui">
+         <toggleGroup>
+            <ToggleGroup fx:id="dispo" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="disponible_non" layoutX="281.0" layoutY="252.0" mnemonicParsing="false" onAction="#nondispon" text="Non">
+         <toggleGroup>
+            <ToggleGroup fx:id="dispo" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="piece" layoutX="196.0" layoutY="337.0" mnemonicParsing="false" onAction="#changeUnite" selected="true" text="par piece">
+         <toggleGroup>
+            <ToggleGroup fx:id="unite" />
+         </toggleGroup>
+      </RadioButton>
+      <Label layoutX="83.0" layoutY="337.0" prefHeight="19.0" prefWidth="55.0" text="Unite" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="kilogramme" layoutX="301.0" layoutY="337.0" mnemonicParsing="false" onAction="#changeUniteKilo" text="par kilogramme">
+         <toggleGroup>
+            <ToggleGroup fx:id="unite" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="littre" layoutX="426.0" layoutY="337.0" mnemonicParsing="false" onAction="#changeUniteLit" text="par littre">
+         <toggleGroup>
+            <ToggleGroup fx:id="unite" />
+         </toggleGroup>
+      </RadioButton>
+      <Button layoutX="521.0" layoutY="372.0" mnemonicParsing="false" onAction="#updateProduit" prefHeight="25.0" prefWidth="75.0" text="Modifier" />
+      <RadioButton fx:id="sucre" layoutX="197.0" layoutY="376.0" mnemonicParsing="false" onAction="#changeType" selected="true" text="sucré ">
+         <toggleGroup>
+            <ToggleGroup fx:id="type" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="sale" layoutX="302.0" layoutY="376.0" mnemonicParsing="false" onAction="#changeTypeSale" prefHeight="17.0" prefWidth="44.0" text="salé">
+         <toggleGroup>
+            <ToggleGroup fx:id="type" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="sucreSale" layoutX="426.0" layoutY="376.0" mnemonicParsing="false" onAction="#changeTypeSucreSale" text="sucré salé">
+         <toggleGroup>
+            <ToggleGroup fx:id="type" />
+         </toggleGroup>
+      </RadioButton>
+      <ImageView fx:id="view" fitHeight="176.0" fitWidth="119.0" layoutX="466.0" layoutY="86.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../icons/download.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="70.0" layoutX="461.0" layoutY="220.0" opacity="0.63" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../icons/circle-instagram_icon-icons.com_66832.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="addP" layoutX="346.0" layoutY="182.0" mnemonicParsing="false" text="upload" />
+   </children>
+</AnchorPane>

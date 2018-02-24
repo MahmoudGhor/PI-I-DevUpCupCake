@@ -28,6 +28,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -40,6 +41,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.entities.Patissier;
 import pi.idevup.cupcake.services.ServicePatisserieBd;
 import pi.idevup.cupcake.services.ServiceUserBd;
@@ -52,8 +54,6 @@ import pi.idevup.cupcake.services.serviceCryptage;
  */
 public class AddPastyController implements Initializable {
 
-    @FXML
-    private JFXButton suivant;
     @FXML
     private JFXTextField username;
     
@@ -76,10 +76,6 @@ public class AddPastyController implements Initializable {
     @FXML
     private JFXTextField town;
     private String townbd;
-    @FXML
-    private Label worktimel;
-    @FXML
-    private Label dayoff;
     @FXML
     private JFXTextField address;
     private String addressbd;
@@ -108,10 +104,6 @@ public class AddPastyController implements Initializable {
     private JFXCheckBox dimanche;
         private String worktimeStart;
 
-    @FXML
-    private Label worktimel1;
-    @FXML
-    private Label worktimel11;
     @FXML
     private AnchorPane part1;
     @FXML
@@ -154,10 +146,7 @@ public class AddPastyController implements Initializable {
     private JFXCheckBox withOutSucre;
     @FXML
     private JFXCheckBox withOutGluten;
-    @FXML
-    private JFXTextField latitude;
-    @FXML
-    private JFXTextField longitude;
+   
     @FXML
     private Label phonel1;
     @FXML
@@ -205,10 +194,7 @@ public class AddPastyController implements Initializable {
     private Label er15;
     @FXML
     private Label er16;
-    @FXML
-    private Label er18;
-    @FXML
-    private Label er17;
+   
     String jt;
     String picture;
     @FXML
@@ -223,6 +209,20 @@ public class AddPastyController implements Initializable {
     private Label er21;
     @FXML
     private JFXButton cancel;
+    @FXML
+    private Label worktimel;
+    @FXML
+    private Label dayoff;
+    @FXML
+    private Label worktimel1;
+    @FXML
+    private Label worktimel11;
+    @FXML
+    private JFXButton suivant;
+    @FXML
+    private JFXButton map;
+    @FXML
+    private ImageView mapIm;
 
     public Label getEr1() {
         return er1;
@@ -443,8 +443,7 @@ public class AddPastyController implements Initializable {
                                 er14.setVisible(false);
                                 er15.setVisible(false);
                                 er16.setVisible(false);
-                                er17.setVisible(false);
-                                er18.setVisible(false);
+                               
                                 er12.setVisible(false);
                                 er19.setVisible(false);
                                 er20.setVisible(false);
@@ -464,7 +463,6 @@ public class AddPastyController implements Initializable {
    
         if(("".equals(namePasty.getText())))er1.setVisible(true); else er1.setVisible(false);
         if(("".equals(username.getText())))er2.setVisible(true); else er2.setVisible(false);
-     if(!ServiceUserBd.usernameUnique(username.getText()))er12.setVisible(true);else er12.setVisible(false);
         if("".equals(firstname.getText()))er3.setVisible(true); else er3.setVisible(false);
         if("".equals(lastname.getText())) er4.setVisible(true); else er4.setVisible(false);
         if("".equals(mail.getText()))er5.setVisible(true);else er5.setVisible(false);
@@ -602,16 +600,14 @@ alert.showAndWait();
              if("".equals(specialte)) er14.setVisible(true); else er14.setVisible(false);
         if("".equals(service))er15.setVisible(true);else er15.setVisible(false);
         if("".equals(meansOfPayment)) er16.setVisible(true);else er16.setVisible(false);
-         if("".equals(latitude.getText()))
-                           er17.setVisible(true);else er17.setVisible(false);
-  
-        if("".equals(longitude.getText()))er18.setVisible(true);else er18.setVisible(false);
+        
              System.out.println(service);
-             if((!"".equals(specialte))&&(!"".equals(service))&&(!"".equals(meansOfPayment))&&(!"".equals(latitude.getText()))&&(!"".equals(longitude.getText()))){
-                 Patissier p = new Patissier(usernamebd, mailbd, mdp, firstnamebd, lastnamebd, phonebd,townbd,addressbd,codepostalebd,picture , facebook.getText(),namePasty.getText(), worktimeEnd, jt, specialte, service, website.getText(), meansOfPayment, exigence, latitude.getText(), longitude.getText() );
+             if((!"".equals(specialte))&&(!"".equals(service))&&(!"".equals(meansOfPayment))){
+                 Patissier p = new Patissier(usernamebd, mailbd, mdp, firstnamebd, lastnamebd, phonebd,townbd,addressbd,codepostalebd,picture , facebook.getText(),namePasty.getText(), worktimeEnd, jt, specialte, service, website.getText(), meansOfPayment, exigence, "1", "2" );
                  
                  ServicePatisserieBd.insertPatissier(p);
-                 
+                 Notifications n = Notifications.create().title("Information").graphic(null).position(Pos.TOP_CENTER).text("Inscription avec Succés");
+                 n.showInformation();
                  
                  
                  
@@ -709,6 +705,16 @@ alert.showAndWait();
             // ... user chose CANCEL or closed the dialog
         }
 
+    }
+
+    @FXML
+    private void checkUsername(KeyEvent event) {
+             if(!ServiceUserBd.usernameUnique(username.getText()))er12.setVisible(true);else er12.setVisible(false);
+
+    }
+
+    @FXML
+    private void localMap(MouseEvent event) {
     }
 
     
