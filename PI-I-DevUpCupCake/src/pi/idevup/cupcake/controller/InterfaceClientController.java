@@ -9,9 +9,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import pi.idevup.cupcake.entities.ReadRSS;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,6 +51,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -118,6 +125,22 @@ public class InterfaceClientController implements Initializable {
     private JFXPasswordField passwordActuelle;
     @FXML
     private JFXButton annulerInformationCompte;
+    @FXML
+    private JFXPasswordField newPassword;
+    @FXML
+    private JFXPasswordField newPassword1;
+    @FXML
+    private JFXButton buttonSaveNewPassword;
+    @FXML
+    private JFXButton UpdateImage;
+    
+    FileInputStream fis = null;
+    File f=null;
+    List<String> lstFile;
+
+    
+    
+
     
 
     /**
@@ -168,7 +191,9 @@ public class InterfaceClientController implements Initializable {
     imageProfil.setImage(im);
     //imageProfil.setImage(image);
         FirstLastName.setText(servClient.getInfoClient(User.uName).getFirstname()+" "+servClient.getInfoClient(User.uName).getLastname());
-                
+                 lstFile = new ArrayList<>();
+        lstFile.add("*.png");
+        lstFile.add("*.jpg");
    
     }    
 
@@ -197,12 +222,17 @@ public class InterfaceClientController implements Initializable {
         passwordActuelle.setVisible(false);
         btnChangerMotDePasse.setVisible(true);
         showInformationPersonnelle.setVisible(false);
+        newPassword.setVisible(false);
+        newPassword1.setVisible(false);
+        annulerInformationCompte.setVisible(false);
+        buttonSaveNewPassword.setVisible(false);
     }
 
     @FXML
     private void modifierProfilClick(MouseEvent event) {
         anchorModif.setVisible(true);
         showInformationCompte.setVisible(true);
+        showInformationPersonnelle.setVisible(true);
         anchorInformationLieAuCompte.setVisible(false);
         anchorInformationPersonnelle.setVisible(false);
         
@@ -222,6 +252,7 @@ public class InterfaceClientController implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+        anchorModif.getScene().getWindow().hide();
         
         //btnChangerEmail.getScene().getWindow().hide();
          //anchorModif.getChildren().clear();
@@ -389,7 +420,12 @@ public class InterfaceClientController implements Initializable {
     {
         if (servClient.verifMotDePasseExistant(servCrypt.cryptWithMD5(passwordActuelle.getText()), User.uName)==true)
         {
-            System.out.println("Mot de passe correct");
+            passwordActuelle.setVisible(false);
+            passwordActuelle.setText("");
+            buttonSaveNewPassword.setVisible(true);
+            newPassword.setVisible(true);
+            newPassword1.setVisible(true);
+            annulerInformationCompte.setVisible(true);
         }
         else
         {
@@ -397,13 +433,65 @@ public class InterfaceClientController implements Initializable {
                             alert.setHeaderText("Echec");
                             alert.setContentText("Mot de passe incorrecte");
                             alert.show();
-                            passwordActuelle.requestFocus();   
-        }
+                            passwordActuelle.requestFocus();     }
+         }
+         }
+
+    @FXML
+    private void saveNewPassword(MouseEvent event) {
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           if (newPassword.getText().trim().length()<6)
+           {
+                alert.setTitle("Attention");
+                            alert.setHeaderText("Echec");
+                            alert.setContentText("Mot de passe doit contenir au minimum 6 caractére");
+                            alert.show();
+                            newPassword.requestFocus();  
+           }
+           else if (!(newPassword.getText().equals(newPassword1.getText())))
+           {
+                alert.setTitle("Attention");
+                            alert.setHeaderText("Echec");
+                            alert.setContentText("Veillez verifier votre mot de passe");
+                            alert.show();
+                            newPassword1.requestFocus();  
+           }
+           else
+           {
+               servClient.updatePassword(servCrypt.cryptWithMD5(newPassword.getText()),User.uName);
+                    anchorModif.setVisible(false);
+                    newPassword.setText("");
+                    newPassword1.setText("");
+                ServiceNotification.showNotif("Operation effectué", "Votre mot de passe est bien à jour");
+          }
+
+  
+       
         
         
     }
     
-    }
+    
+      @FXML
+    private void UpdateImage(MouseEvent event) throws MalformedURLException, FileNotFoundException  {
+        
+         FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("word file", lstFile));
+        f = fc.showOpenDialog(null);
+        
+        if (f!=null)
+        {
+             Image image = new Image(f.toURI().toURL().toString());
+            imageProfil.setImage(image) ;
+            fis = new FileInputStream(f);
+            servClient.updateImage(f, fis, User.uName);
+                   ServiceNotification.showNotif("Operation effectué", "Votre image est bien à jour");
+                   anchorModif.setVisible(false);
+                   
+        }
+           }
+    
+   
     
 
 

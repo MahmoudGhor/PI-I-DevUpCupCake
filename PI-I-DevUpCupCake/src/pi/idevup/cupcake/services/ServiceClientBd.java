@@ -160,7 +160,6 @@ public class ServiceClientBd {
 }
                public void updateClientInfoPersonnelle(Client c , String username) {
         try {
-            System.out.println(c.getPicture());
          Statement ste = ds.getConnection().createStatement();
          String req = "update user set firstname='"+c.getFirstname()+"',lastname='"+c.getLastname()+"',phone='"+c.getPhone()+"',town='"+c.getTown()+"',address='"+c.getAddress()+"',postalcode='"+c.getPostalcode()+"',facebook='"+c.getFacebook()+"'  where username='"+username+"'";
          ste.executeUpdate(req);
@@ -173,7 +172,7 @@ public class ServiceClientBd {
                
                      public void updateMailClient(Client c , String username) {
         try {
-            System.out.println(c.getPicture());
+           // System.out.println(c.getPicture());
          Statement ste = ds.getConnection().createStatement();
          String req = "update user set email='"+c.getEmail()+"'  where username='"+username+"'";
          ste.executeUpdate(req);
@@ -232,6 +231,33 @@ public class ServiceClientBd {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
          return image;
+       
+}
+         
+                     public void updatePassword(String password , String username) {
+        try {
+         
+         Statement ste = ds.getConnection().createStatement();
+         String req = "update user set password='"+password+"'  where username='"+username+"'";
+         ste.executeUpdate(req);
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+}
+                     public void updateImage(File file , FileInputStream fis , String username) {
+        try {
+         
+         String req = "update user set picture= ? where username= ?";
+         PreparedStatement ste1 = ds.getInstance().getConnection().prepareStatement(req);
+         ste1.setBinaryStream(1, fis , (int)file.length());
+         ste1.setString(2,username);
+         ste1.executeUpdate();
+            } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
        
 }
 }
