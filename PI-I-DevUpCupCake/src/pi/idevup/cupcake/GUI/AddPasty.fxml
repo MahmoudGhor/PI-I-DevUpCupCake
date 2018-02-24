@@ -6,193 +6,334 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="555.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.idevup.cupcake.controller.AddPastyController">
+<AnchorPane id="AnchorPane" prefHeight="648.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pi.idevup.cupcake.controller.AddPastyController">
    <children>
-      <AnchorPane fx:id="part1" layoutX="12.0" layoutY="4.0">
+      <AnchorPane fx:id="part1" layoutX="11.0" layoutY="11.0" prefHeight="648.0" prefWidth="797.0">
          <children>
-            <JFXButton fx:id="suivant" buttonType="RAISED" layoutX="462.0" layoutY="513.0" onAction="#nextPage" prefHeight="32.0" prefWidth="95.0" text="Suivant &gt;">
-               <ripplerFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="BLACK" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </ripplerFill>
+            <JFXTextField fx:id="username" labelFloat="true" layoutX="170.0" layoutY="136.0" prefHeight="28.0" prefWidth="221.0" promptText="Nom d'utilisateur(*)" unFocusColor="#ff959c" />
+            <JFXTextField fx:id="firstname" labelFloat="true" layoutX="170.0" layoutY="195.0" prefHeight="28.0" prefWidth="221.0" promptText="Nom(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="lastname" labelFloat="true" layoutX="170.0" layoutY="264.0" prefHeight="28.0" prefWidth="221.0" promptText="Prénom(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="mail" labelFloat="true" layoutX="170.0" layoutY="332.0" onKeyReleased="#verifMail" prefHeight="28.0" prefWidth="221.0" promptText="E-mail(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="phone" labelFloat="true" layoutX="468.0" layoutY="74.0" onKeyReleased="#verifPhone" prefHeight="28.0" prefWidth="221.0" promptText="Phone(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="town" labelFloat="true" layoutX="468.0" layoutY="143.0" prefHeight="28.0" prefWidth="221.0" promptText="Town(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <Label fx:id="worktimel" layoutX="506.0" layoutY="336.0" text="Heures De Travail(*):" underline="true">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="dayoff" layoutX="509.0" layoutY="428.0" text="Jour de Repos" underline="true">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="address" labelFloat="true" layoutX="464.0" layoutY="210.0" prefHeight="28.0" prefWidth="221.0" promptText="Adresse(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="pswd" labelFloat="true" layoutX="170.0" layoutY="408.0" onKeyReleased="#verifMdp" prefHeight="28.0" prefWidth="221.0" promptText="Mot de Passe(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXPasswordField fx:id="pswd_verif" labelFloat="true" layoutX="165.0" layoutY="491.0" onKeyReleased="#verifPswd" prefHeight="28.0" prefWidth="221.0" promptText="Conformer Mot de Passe(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXPasswordField>
+            <JFXCheckBox fx:id="lundi" checkedColor="#eb3843" layoutX="494.0" layoutY="457.0" text="Lundi">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="mardi" checkedColor="#eb3843" layoutX="494.0" layoutY="486.0" text="Mardi">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="vendredi" checkedColor="#eb3843" layoutX="618.0" layoutY="457.0" text="Vendredi">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="samedi" checkedColor="#eb3843" layoutX="618.0" layoutY="487.0" text="Samedi">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="mercredi" checkedColor="#eb3843" layoutX="494.0" layoutY="513.0" text="Mercredi">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="jeudi" checkedColor="#eb3843" layoutX="494.0" layoutY="542.0" text="Jeudi">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <JFXCheckBox fx:id="dimanche" checkedColor="#eb3843" layoutX="618.0" layoutY="515.0" text="Dimanche">
+               <font>
+                  <Font name="Agency FB" size="21.0" />
+               </font>
+            </JFXCheckBox>
+            <Label fx:id="worktimel1" layoutX="460.0" layoutY="373.0" prefHeight="17.0" prefWidth="24.0" text="De">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="worktimel11" layoutX="627.0" layoutY="374.0" prefHeight="17.0" prefWidth="14.0" text="à">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="codepostal" labelFloat="true" layoutX="467.0" layoutY="271.0" onKeyReleased="#verifCodePostal" prefHeight="28.0" prefWidth="221.0" promptText="Code Postal(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="namePasty" labelFloat="true" layoutX="171.0" layoutY="73.0" onKeyReleased="#checkUsername" prefHeight="28.0" prefWidth="221.0" promptText="Nom de Patisserie(*)" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTimePicker fx:id="timeStart" defaultColor="#c61f01f5" layoutX="494.0" layoutY="374.0" prefHeight="25.0" prefWidth="124.0" />
+            <JFXTimePicker fx:id="timeEnd" defaultColor="#c61f01" layoutX="654.0" layoutY="369.0" prefHeight="25.0" prefWidth="124.0" />
+            <Label fx:id="er1" layoutX="176.0" layoutY="103.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer Nom du Patisserie" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er2" layoutX="171.0" layoutY="165.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer Nom d'Utilisateur" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er3" layoutX="171.0" layoutY="230.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre Nom " textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er4" layoutX="171.0" layoutY="296.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre Prénom " textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er5" layoutX="171.0" layoutY="366.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre E-mail" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er6" layoutX="173.0" layoutY="440.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre mot de passe" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er7" layoutX="171.0" layoutY="523.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre mot de passe" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er8" layoutX="468.0" layoutY="105.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Téléphone" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="valide" fitHeight="18.0" fitWidth="14.0" layoutX="402.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="er9" layoutX="468.0" layoutY="177.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Ville" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er10" layoutX="468.0" layoutY="243.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Adresse" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er11" layoutX="470.0" layoutY="304.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Code Postal" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er13" layoutX="543.0" layoutY="404.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer vos Heures de travail" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="valide2" fitHeight="18.0" fitWidth="14.0" layoutX="409.0" layoutY="498.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="er19" layoutX="171.0" layoutY="366.0" prefHeight="17.0" prefWidth="157.0" text="*E-mail invalide" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er20" layoutX="173.0" layoutY="440.0" prefHeight="17.0" prefWidth="157.0" text="*6 caractéres minimum" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er22" layoutX="470.0" layoutY="304.0" prefHeight="17.0" prefWidth="157.0" text="*4 chiffres" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er21" layoutX="468.0" layoutY="105.0" prefHeight="17.0" prefWidth="157.0" text="*8 chiffres" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="er12" layoutX="171.0" layoutY="165.0" prefHeight="17.0" prefWidth="159.0" text="*Nom déja Existe" textFill="#ff0505">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="suivant" layoutX="656.0" layoutY="603.0" onAction="#nextPage" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #EB3843;" text="Suivant &gt;" textFill="#f5efef">
+               <font>
+                  <Font name="MT Extra" size="16.0" />
+               </font>
             </JFXButton>
-            <JFXTextField fx:id="username" labelFloat="true" layoutX="55.0" layoutY="81.0" promptText="User Name(*)" />
-            <JFXTextField fx:id="firstname" labelFloat="true" layoutX="55.0" layoutY="141.0" promptText="First Name(*)" />
-            <JFXTextField fx:id="lastname" labelFloat="true" layoutX="55.0" layoutY="215.0" promptText="Last Name(*)" />
-            <JFXTextField fx:id="mail" labelFloat="true" layoutX="55.0" layoutY="288.0" onKeyReleased="#verifMail" promptText="E-mail(*)" />
-            <JFXTextField fx:id="phone" labelFloat="true" layoutX="312.0" layoutY="42.0" onKeyReleased="#verifPhone" promptText="Phone(*)" />
-            <JFXTextField fx:id="town" labelFloat="true" layoutX="312.0" layoutY="106.0" promptText="Town(*)" />
-            <Label fx:id="worktimel" layoutX="335.0" layoutY="282.0" text="Heures De Travail(*):" />
-            <Label fx:id="dayoff" layoutX="334.0" layoutY="347.0" text="Jour de Repos" />
-            <JFXTextField fx:id="address" labelFloat="true" layoutX="308.0" layoutY="178.0" prefHeight="25.0" prefWidth="143.0" promptText="Adresse(*)" />
-            <JFXPasswordField fx:id="pswd" labelFloat="true" layoutX="55.0" layoutY="364.0" onKeyReleased="#verifMdp" promptText="Password(*)" />
-            <JFXPasswordField fx:id="pswd_verif" labelFloat="true" layoutX="50.0" layoutY="447.0" onKeyReleased="#verifPswd" prefHeight="25.0" prefWidth="150.0" promptText="Conformer Password(*)" />
-            <JFXCheckBox fx:id="lundi" layoutX="319.0" layoutY="368.0" text="Lundi" />
-            <JFXCheckBox fx:id="mardi" layoutX="319.0" layoutY="397.0" text="Mardi" />
-            <JFXCheckBox fx:id="vendredi" layoutX="443.0" layoutY="368.0" text="Vendredi" />
-            <JFXCheckBox fx:id="samedi" layoutX="443.0" layoutY="398.0" text="Samedi" />
-            <JFXCheckBox fx:id="mercredi" layoutX="319.0" layoutY="424.0" text="Mercredi" />
-            <JFXCheckBox fx:id="jeudi" layoutX="319.0" layoutY="453.0" text="Jeudi" />
-            <JFXCheckBox fx:id="dimanche" layoutX="443.0" layoutY="426.0" text="Dimanche" />
-            <Label fx:id="worktimel1" layoutX="298.0" layoutY="305.0" prefHeight="17.0" prefWidth="24.0" text="De" />
-            <Label fx:id="worktimel11" layoutX="417.0" layoutY="305.0" prefHeight="17.0" prefWidth="14.0" text="à" />
-            <JFXTextField fx:id="codepostal" labelFloat="true" layoutX="311.0" layoutY="235.0" onKeyReleased="#verifCodePostal" prefHeight="25.0" prefWidth="135.0" promptText="Code Postal(*)" />
-            <JFXTextField fx:id="namePasty" labelFloat="true" layoutX="56.0" layoutY="29.0" promptText="Nom de Patisserie(*)" />
-            <JFXTimePicker fx:id="timeStart" defaultColor="#c61f01f5" layoutX="321.0" layoutY="297.0" prefHeight="25.0" prefWidth="90.0" />
-            <JFXTimePicker fx:id="timeEnd" defaultColor="#c61f01" layoutX="434.0" layoutY="295.0" prefHeight="25.0" prefWidth="90.0" />
-            <Label fx:id="er1" layoutX="61.0" layoutY="59.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer Nom du Patisserie" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er2" layoutX="56.0" layoutY="110.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer Nom d'Utilisateur" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er3" layoutX="56.0" layoutY="178.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre Nom " textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er4" layoutX="56.0" layoutY="252.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre Prénom " textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er5" layoutX="56.0" layoutY="322.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre E-mail" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er6" layoutX="58.0" layoutY="396.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre mot de passe" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er7" layoutX="56.0" layoutY="479.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer votre mot de passe" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er8" layoutX="312.0" layoutY="73.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Téléphone" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="valide" fitHeight="18.0" fitWidth="14.0" layoutX="214.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="er9" layoutX="312.0" layoutY="145.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Ville" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er10" layoutX="312.0" layoutY="207.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Adresse" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er11" layoutX="314.0" layoutY="263.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer votre Code Postal" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er13" layoutX="318.0" layoutY="330.0" prefHeight="17.0" prefWidth="143.0" text="*Insérer vos Heures de travail" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="valide2" fitHeight="18.0" fitWidth="14.0" layoutX="207.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="er19" layoutX="56.0" layoutY="322.0" prefHeight="17.0" prefWidth="157.0" text="*E-mail invalide" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er20" layoutX="58.0" layoutY="396.0" prefHeight="17.0" prefWidth="157.0" text="*6 caractéres minimum" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er22" layoutX="314.0" layoutY="263.0" prefHeight="17.0" prefWidth="157.0" text="*4 chiffres" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er21" layoutX="312.0" layoutY="73.0" prefHeight="17.0" prefWidth="157.0" text="*8 chiffres" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er12" layoutX="56.0" layoutY="110.0" prefHeight="17.0" prefWidth="159.0" text="*Insérer un autre Nom d'Utilisateur" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="part2" layoutY="-1.0" prefHeight="545.0" prefWidth="594.0">
+      <AnchorPane fx:id="part2" layoutX="12.0" layoutY="4.0" prefHeight="648.0" prefWidth="754.0">
          <children>
-            <Label fx:id="lastnamel" layoutX="66.0" layoutY="178.0" text="Specialité" />
-            <Label fx:id="maill" layoutX="73.0" layoutY="279.0" text="Service" />
-            <Label fx:id="pwdl" layoutX="66.0" layoutY="329.0" />
-            <Label fx:id="phonel" layoutX="351.0" layoutY="37.0" text="Moyens de payement " />
-            <JFXButton fx:id="signin" layoutX="462.0" layoutY="517.0" onAction="#signIn" prefHeight="32.0" prefWidth="95.0" text="S'inscrire" />
-            <JFXTextField fx:id="website" labelFloat="true" layoutX="55.0" layoutY="66.0" promptText="Website" />
-            <JFXTextField fx:id="facebook" labelFloat="true" layoutX="55.0" layoutY="133.0" promptText="Facebook" />
-            <JFXCheckBox fx:id="sale" layoutX="50.0" layoutY="209.0" text="Salé" />
-            <JFXCheckBox fx:id="sucre" layoutX="50.0" layoutY="242.0" prefHeight="18.0" prefWidth="73.0" text="Sucré" />
-            <JFXCheckBox fx:id="livraison" layoutX="44.0" layoutY="304.0" text="Livraison" />
-            <JFXCheckBox fx:id="Reservation" layoutX="43.0" layoutY="338.0" prefHeight="18.0" prefWidth="95.0" text="Reservation" />
-            <JFXCheckBox fx:id="importer" layoutX="149.0" layoutY="305.0" text="Importer" />
-            <JFXCheckBox fx:id="autre" layoutX="149.0" layoutY="337.0" prefHeight="18.0" prefWidth="73.0" text="Autre" />
-            <JFXCheckBox fx:id="espece" layoutX="303.0" layoutY="64.0" text="Espéce" />
-            <JFXCheckBox fx:id="carteBanquaire" layoutX="388.0" layoutY="65.0" prefHeight="18.0" prefWidth="124.0" text="Carte Banquire" />
-            <JFXCheckBox fx:id="cheque" layoutX="510.0" layoutY="65.0" prefHeight="18.0" prefWidth="73.0" text="Chéque" />
-            <JFXButton fx:id="retour" layoutX="300.0" layoutY="517.0" onAction="#retourPage" prefHeight="32.0" prefWidth="95.0" text="&lt; Retour" />
-            <Label fx:id="website1" layoutX="359.0" layoutY="116.0" prefHeight="17.0" prefWidth="135.0" text="Exigence" />
-            <JFXCheckBox fx:id="withOutSucre" layoutX="352.0" layoutY="153.0" text="Sans Sucre" />
-            <JFXCheckBox fx:id="withOutGluten" layoutX="352.0" layoutY="186.0" prefHeight="18.0" prefWidth="124.0" text="Sans gluten" />
-            <JFXTextField fx:id="latitude" labelFloat="true" layoutX="347.0" layoutY="248.0" promptText="Latitude" />
-            <JFXTextField fx:id="longitude" labelFloat="true" layoutX="347.0" layoutY="292.0" promptText="Longitude" />
-            <Label fx:id="phonel1" layoutX="352.0" layoutY="213.0" />
-            <ImageView fx:id="pic" fitHeight="100.0" fitWidth="100.0" layoutX="348.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="addPic" buttonType="RAISED" layoutX="87.0" layoutY="401.0" onMouseClicked="#selectPic" prefHeight="25.0" prefWidth="157.0" ripplerFill="#b2a7a7" text="Importer des photos" />
-            <Label fx:id="er14" layoutX="49.0" layoutY="262.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer vos spécialité" textFill="#ff0505">
+            <Label fx:id="lastnamel" layoutX="144.0" layoutY="201.0" text="Specialité" textFill="#111111" underline="true" wrapText="true">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font></Label>
+            <Label fx:id="maill" layoutX="146.0" layoutY="300.0" text="Service" textFill="#111111" underline="true" wrapText="true">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font></Label>
+            <Label fx:id="pwdl" layoutX="110.0" layoutY="353.0" />
+            <Label fx:id="phonel" layoutX="462.0" layoutY="61.0" text="Moyens de payement " textFill="#111111" underline="true" wrapText="true">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font></Label>
+            <JFXButton fx:id="signin" layoutX="645.0" layoutY="602.0" onAction="#signIn" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #EB3843;" text="S'inscrire" textFill="#f5efef">
+               <font>
+                  <Font name="MT Extra" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="website" labelFloat="true" layoutX="128.0" layoutY="90.0" prefHeight="28.0" prefWidth="221.0" promptText="Website" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="facebook" labelFloat="true" layoutX="128.0" layoutY="150.0" prefHeight="28.0" prefWidth="221.0" promptText="Facebook" unFocusColor="#ff959c">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
+            <JFXCheckBox fx:id="sale" checkedColor="#eb3843" layoutX="117.0" layoutY="244.0" text="Salé">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="sucre" checkedColor="#eb3843" layoutX="216.0" layoutY="244.0" prefHeight="18.0" prefWidth="73.0" text="Sucré">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="livraison" checkedColor="#eb3843" layoutX="117.0" layoutY="330.0" text="Livraison">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="Reservation" checkedColor="#eb3843" layoutX="116.0" layoutY="362.0" prefHeight="21.0" prefWidth="124.0" text="Reservation">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="importer" checkedColor="#eb3843" layoutX="275.0" layoutY="330.0" prefHeight="21.0" prefWidth="95.0" text="Importer">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="autre" checkedColor="#eb3843" layoutX="276.0" layoutY="360.0" prefHeight="18.0" prefWidth="73.0" text="Autre">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="espece" checkedColor="#eb3843" layoutX="447.0" layoutY="91.0" text="Espéce">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="carteBanquaire" checkedColor="#eb3843" layoutX="447.0" layoutY="121.0" prefHeight="18.0" prefWidth="124.0" text="Carte Banquire">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="cheque" checkedColor="#eb3843" layoutX="447.0" layoutY="152.0" prefHeight="21.0" prefWidth="124.0" text="Chéque">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXButton fx:id="retour" layoutX="414.0" layoutY="602.0" onAction="#retourPage" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #EB3843;" text="&lt; Retour" textFill="#f5efef">
+               <font>
+                  <Font name="MT Extra" size="16.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="website1" layoutX="462.0" layoutY="195.0" prefHeight="40.0" prefWidth="148.0" text="Exigence" textFill="#111111" underline="true">
+               <font>
+                  <Font name="Agency FB" size="23.0" />
+               </font></Label>
+            <JFXCheckBox fx:id="withOutSucre" checkedColor="#eb3843" layoutX="447.0" layoutY="239.0" prefHeight="31.0" prefWidth="95.0" text="Sans Sucre">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <JFXCheckBox fx:id="withOutGluten" checkedColor="#eb3843" layoutX="594.0" layoutY="240.0" prefHeight="31.0" prefWidth="134.0" text="Sans gluten">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXCheckBox>
+            <Label fx:id="phonel1" layoutX="352.0" layoutY="237.0" />
+            <ImageView fx:id="pic" fitHeight="200.0" fitWidth="306.0" layoutX="388.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton fx:id="addPic" buttonType="RAISED" layoutX="134.0" layoutY="434.0" onMouseClicked="#selectPic" prefHeight="31.0" prefWidth="134.0" ripplerFill="#ff959c" style="-fx-background-color: eb3843;" text="Importer une Image" textFill="#fffbfb" />
+            <Label fx:id="er14" layoutX="121.0" layoutY="266.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer vos spécialité" textFill="#ff0505">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="er15" layoutX="54.0" layoutY="356.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer vos services" textFill="#ff0505">
+            <Label fx:id="er15" layoutX="127.0" layoutY="387.0" prefHeight="17.0" prefWidth="124.0" text="*Insérer vos services" textFill="#ff0505">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="er16" layoutX="348.0" layoutY="91.0" prefHeight="17.0" prefWidth="157.0" text="*Insérer vos Moyens de payement" textFill="#ff0505">
+            <Label fx:id="er16" layoutX="442.0" layoutY="173.0" prefHeight="17.0" prefWidth="157.0" text="*Insérer vos Moyens de payement" textFill="#ff0505">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="er18" layoutX="348.0" layoutY="321.0" prefHeight="17.0" prefWidth="157.0" text="*Insérer votre longitude" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="er17" layoutX="347.0" layoutY="276.0" prefHeight="17.0" prefWidth="157.0" text="*Insérer votre latitude" textFill="#ff0505">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
+            <JFXButton fx:id="map" buttonType="RAISED" layoutX="431.0" layoutY="304.0" onMouseClicked="#localMap" prefHeight="40.0" prefWidth="157.0" ripplerFill="#eae2e2" style="-fx-background-color: #eae2e2;" text="Donner Votre Localisation" textFill="#222121" />
+            <ImageView fx:id="mapIm" fitHeight="31.0" fitWidth="31.0" layoutX="607.0" layoutY="304.0" onMouseClicked="#localMap" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/loacal.png" />
+               </image></ImageView>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="cancel" layoutX="399.0" layoutY="522.0" onAction="#quitter" prefHeight="25.0" prefWidth="65.0" text="Quitter" />
+      <JFXButton fx:id="cancel" layoutX="541.0" layoutY="612.0" onAction="#quitter" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #EB3843;" text="Quitter" textFill="#f5efef">
+         <font>
+            <Font name="MT Extra" size="16.0" />
+         </font>
+      </JFXButton>
+      <Pane prefHeight="659.0" prefWidth="125.0" style="-fx-background-color: eb3843;" />
+      <Label layoutX="123.0" layoutY="35.0" prefHeight="40.0" prefWidth="221.0" style="-fx-background-color: eb3843;" text="Formulaire d'inscription" textFill="#fcf7f7">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
