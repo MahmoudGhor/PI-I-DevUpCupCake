@@ -18,12 +18,13 @@ public class Product {
     private String pictures;
     private boolean available;
     private String type;
-    private float price;
+    private int price;
     private Date addedDate;
-    private int patissierId;
+    private String userName;
     private String unite;
 
-    public Product(int productId, String productName, String description, String pictures, boolean available, String type, float price,String unite, Date addedDate, int patissierId) {
+    public Product(int productId, String productName, String description, String pictures,
+            boolean available, String type, int price,String unite, Date addedDate, String userName) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
@@ -33,14 +34,14 @@ public class Product {
         this.price = price;
         this.unite=unite;
         this.addedDate = addedDate;
-        this.patissierId = patissierId;
+        this.userName = userName;
     }
 
 
     
 
     public Product(String productName, String description, String pictures, boolean available, String type, 
-            float price ,String unite) {
+            int price ,String unite) {
         this.productName = productName;
         this.description = description;
         this.pictures = pictures;
@@ -50,11 +51,25 @@ public class Product {
         this.unite=unite;
     }
     
+    public Product(String productName, String description, String pictures, boolean available, String type, 
+            int price ,String unite,Date addedDate) {
+        this.productName = productName;
+        this.description = description;
+        this.pictures = pictures;
+        this.available = available;
+        this.type = type;
+        this.price = price;
+        this.unite=unite;
+        this.addedDate=addedDate;
+    }
+    
     
 
 
     public Product() {
     }
+
+    
 
     public int getProductId() {
         return productId;
@@ -67,6 +82,7 @@ public class Product {
     public String getProductName() {
         return productName;
     }
+
 
     public void setProductName(String productName) {
         this.productName = productName;
@@ -104,11 +120,11 @@ public class Product {
         this.type = type;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -120,13 +136,15 @@ public class Product {
         this.addedDate = addedDate;
     }
 
-    public int getPatissierId() {
-        return patissierId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setPatissierId(int patissierId) {
-        this.patissierId = patissierId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
+
+  
     public String getUnite() {
         return unite;
     }
@@ -163,7 +181,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "productId=" + productId + ", productName=" + productName + ", description=" + description + ", pictures=" + pictures + ", available=" + available + ", type=" + type + ", price=" + price + '}';
+        return  productName +"     " + description + "     "+addedDate;
     }
     
     
