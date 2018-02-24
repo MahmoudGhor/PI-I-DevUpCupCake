@@ -188,7 +188,7 @@ public class SignInController implements Initializable {
             if (us.Gettype(uname).equals("a:1{i:0;s:10:\"ROLE_CLIENT\";}")) {
                // Session.LoggedUser = (Session.iuserService.UserByLogin(login.getText()));
                // System.out.println(Session.LoggedUser.getLastname());
-               User.uName=uname;
+                User.uName=uname;
                 System.out.println(User.uName);
                 System.out.println("hello Cl");
                 username.getScene().getWindow().hide();

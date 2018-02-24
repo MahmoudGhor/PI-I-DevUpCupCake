@@ -18,6 +18,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -44,11 +46,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javax.swing.JOptionPane;
 import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.entities.Client;
 import pi.idevup.cupcake.entities.Mailing;
 import pi.idevup.cupcake.services.ServiceClientBd;
 import pi.idevup.cupcake.services.ServiceNotification;
+import pi.idevup.cupcake.services.ServiceRandomMailConfirmation;
 import pi.idevup.cupcake.services.serviceCryptage;
 
 /**
@@ -58,6 +62,7 @@ import pi.idevup.cupcake.services.serviceCryptage;
  */
 public class SignupController implements Initializable {
     ServiceClientBd servCl = new ServiceClientBd();
+    ServiceRandomMailConfirmation serviceMail = new ServiceRandomMailConfirmation();
     boolean verifivationEmail = false;
     boolean verifivationDoubleEmail = false;
     boolean verificationUserName = false;
@@ -346,6 +351,27 @@ public class SignupController implements Initializable {
     }
     }
 
+      public boolean verifconfirMail(String code)
+    {
+        TextInputDialog dialog = new TextInputDialog("");
+                dialog.setTitle("Confirmez votre inscription");
+                dialog.setHeaderText("Un mail vous a été envoyer où vous trouvez le code");
+                dialog.setContentText("Entrez votre code de confirmation:");
+                Optional<String> result = dialog.showAndWait();
+                if (result.get().equals(code)){
+                    
+                        if (result.get().equals(code))
+                        {
+                            return true;
+                        }
+                }
+                else
+                {
+                    return verifconfirMail(code);
+                }
+                return false;
+    }
+    
     @FXML
     private void save(MouseEvent event) throws IOException{
         //verification sexe
@@ -415,28 +441,38 @@ public class SignupController implements Initializable {
           }
           if ((verifivationEmail==true)&&(verifivationDoubleEmail==true)&&(verificationUserName==true)&&(verificationDoublePassword==true)&&(verificationPassword==true)&&(verificationNumero==true)&&(verificationSexe==true)&&(verificationNom==true)&&(verificationPrenom==true)&&(verificationVille==true)&&(verificationAdresse==true)&&(verificationCodePostal==true)&&(verificationImage==true))
           {
-              serviceCryptage crypt = new serviceCryptage();
+              String code =  serviceMail.generateRandomString();
+              System.out.println(code);
+              String to = email.getText();
+                String subject = "Confirmation d'inscription";
+                String message =  "Bienvenu "+Prenom.getText()+" "+Nom.getText()+" dans notre application voici votre code de confirmation "+ code + "/n  Veillez saisir votre code pour confirmer votre inscription" ;
+                String usermail = "pi.dev.esrpit2017@gmail.com";
+                String passmail = "aZERTY123";
+                 Mailing.send(to,subject, message, usermail, passmail);
+//                TextInputDialog dialog = new TextInputDialog("");
+//                dialog.setTitle("Confirmez votre inscription");
+//                dialog.setHeaderText("Un mail vous a été envoyer où vous trouvez le code");
+//                dialog.setContentText("Entrez votre code de confirmation:");
+//                Optional<String> result = dialog.showAndWait();
+//                if (result.get().equals(code)){
+//                    System.out.println(result.get());
+//                        if (result.get().equals(code))
+//                        {
+                                if (verifconfirMail(code)==true)
+                                {
+                              serviceCryptage crypt = new serviceCryptage();
             String mdpCrypte = crypt.cryptWithMD5(password.getText());
               Client client = new Client(username.getText(),email.getText(),mdpCrypte,Nom.getText(),Prenom.getText(),Tel.getText(),ville.getValue(),Adresse.getText(), CodePostal.getText() , URL.toString(), facebook.getText());
               ServiceClientBd serviceClient = new ServiceClientBd();
               serviceClient.insertClient(client,f,fis);
-              Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-              alert.setTitle("Inscription avec ressuite");
-                            alert.setHeaderText("reussite");
-                            alert.setContentText("Votre inscription est effectué avec succés");
-                            alert.show();
-                           
+//              Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//              alert.setTitle("Inscription avec ressuite");
+//                            alert.setHeaderText("reussite");
+//                            alert.setContentText("Votre inscription est effectué avec succés");
+//                            alert.show();
+//                           
                        
         
-                String to = email.getText();
-                String subject = "Confirmation d'inscription";
-                String message =  "Bienvenu "+Prenom.getText()+" "+Nom.getText()+"dans notre application";
-                
-                String usermail = "pi.dev.esrpit2017@gmail.com";
-                String passmail = "aZERTY123";
-                
-                Mailing.send(to,subject, message, usermail, passmail);
-                ServiceNotification.showNotif("Bienvenu", "Un mail de bienvenu vous a été envoyer");
                         
                  Parent root = null;
                         try {
@@ -450,7 +486,9 @@ public class SignupController implements Initializable {
         stage.setScene(scene);
         stage.show();
         pane2.getScene().getWindow().hide();
-       
+        ServiceNotification.showNotif("Bienvenu", "Bienvenu dans Cupcake");
+                        }
+              
           }
           else 
           {
@@ -494,6 +532,9 @@ public class SignupController implements Initializable {
 //        notificationBuilder.darkStyle();
 //        notificationBuilder.showConfirm();
 //    }
+    
+    
+  
 
 
 }
