@@ -34,7 +34,7 @@
                                 <VBox layoutX="106.0" layoutY="17.0">
                                     <children>
                                         <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Alerts" />
-                                        <Label fx:id="Label2" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
+                                        <Label fx:id="AlertL" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
                                     </children>
                                 </VBox>
                             </children>
@@ -45,7 +45,7 @@
                                 <VBox layoutX="106.0" layoutY="17.0">
                                     <children>
                                         <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Likes" />
-                                        <Label fx:id="Label3" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="999999" />
+                                        <Label fx:id="likeL" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="999999" />
                                     </children>
                                 </VBox>
                             </children>
@@ -56,7 +56,7 @@
                         <VBox layoutX="106.0" layoutY="17.0">
                            <children>
                               <Label prefHeight="36.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Comments" />
-                              <Label fx:id="messageL1" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
+                              <Label fx:id="commentL" prefHeight="27.0" prefWidth="106.0" style="-fx-font-size: 20; -fx-font-weight: BOLD;" text="9,999" />
                            </children>
                         </VBox>
                      </children>
@@ -73,7 +73,7 @@
                                         <VBox prefHeight="54.0" prefWidth="155.0">
                                             <children>
                                                 <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;" text="Messages" />
-                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
+                                                <Label fx:id="messageLp" prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
                                             </children>
                                             <padding>
                                                 <Insets left="10.0" />
@@ -93,7 +93,7 @@
                                         <VBox prefHeight="54.0" prefWidth="155.0">
                                             <children>
                                                 <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;" text="Uploads" />
-                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
+                                                <Label fx:id="uploadLp" prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
                                             </children>
                                             <padding>
                                                 <Insets left="10.0" />
@@ -113,7 +113,7 @@
                                         <VBox prefHeight="54.0" prefWidth="155.0">
                                             <children>
                                                 <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white;" text="Likes" />
-                                                <Label prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
+                                                <Label fx:id="likesLp" prefHeight="27.0" prefWidth="155.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="41,200" />
                                             </children>
                                             <padding>
                                                 <Insets left="10.0" />
@@ -138,7 +138,7 @@
                                 </Pane>
                                 <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
                                     <children>
-                                        <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                                        <Label fx:id="InfectL" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
                                         <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Infectionner" />
                                     </children>
                                     <padding>
@@ -156,7 +156,7 @@
                                 </Pane>
                                 <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
                                     <children>
-                                        <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                                        <Label fx:id="clientL" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
                                         <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Clients" />
                                     </children>
                                     <padding>
@@ -174,7 +174,7 @@
                                 </Pane>
                                 <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
                                     <children>
-                                        <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                                        <Label fx:id="produitL" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
                                         <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Product Added" />
                                     </children>
                                     <padding>
@@ -192,7 +192,7 @@
                         </Pane>
                         <VBox layoutY="12.0" prefHeight="66.0" prefWidth="155.0">
                            <children>
-                              <Label prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
+                              <Label fx:id="recipeL" prefHeight="43.0" prefWidth="64.0" style="-fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: white;" text="150" />
                               <Label prefHeight="25.0" prefWidth="145.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: white;" text="Recipe Added" />
                            </children>
                            <padding>

@@ -223,6 +223,7 @@ public class SignInController implements Initializable {
                 System.out.println("hello Admin");
                 //username.getScene().getWindow().hide();
                 loadWindow(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLAdmin.fxml"), "Dashboard", null);
+                username.getScene().getWindow().hide();
                 Notifications n = Notifications.create()
                         .title("Bienvenue")
                         .text("Vous étes connecté en tant que Administrateur!")
