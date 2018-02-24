@@ -8,6 +8,7 @@ package pi.idevup.cupcake.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +19,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +44,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -49,17 +52,24 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.web.HTMLEditor;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.entities.Client;
+import pi.idevup.cupcake.entities.ContacterAdmin;
+import pi.idevup.cupcake.entities.Mailing;
 import pi.idevup.cupcake.entities.User;
 import pi.idevup.cupcake.services.ServiceClientBd;
+import pi.idevup.cupcake.services.ServiceContactAdmin;
 import pi.idevup.cupcake.services.ServiceNotification;
+import pi.idevup.cupcake.services.ServiceRandomMailConfirmation;
+import pi.idevup.cupcake.services.ServiceSysdate;
 import pi.idevup.cupcake.services.ServiceUserBd;
 import pi.idevup.cupcake.services.serviceCryptage;
 
@@ -111,6 +121,9 @@ public class InterfaceClientController implements Initializable {
     
     ServiceClientBd servClient = new ServiceClientBd();
     serviceCryptage servCrypt = new serviceCryptage();
+    ServiceContactAdmin contact = new ServiceContactAdmin();
+    ServiceRandomMailConfirmation serviceMail = new ServiceRandomMailConfirmation();
+    ServiceSysdate dateNow = new ServiceSysdate();
     @FXML
     private JFXButton showInformationCompte;
     @FXML
@@ -137,6 +150,14 @@ public class InterfaceClientController implements Initializable {
     FileInputStream fis = null;
     File f=null;
     List<String> lstFile;
+    @FXML
+    private AnchorPane AnchroContacterAdmin;
+    @FXML
+    private JFXButton ButtonContacterAdmin;
+    @FXML
+    private JFXTextArea Description;
+    @FXML
+    private JFXButton buttonAjouter;
 
     
     
@@ -150,15 +171,19 @@ public class InterfaceClientController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         anchorModif.setVisible(false);
+        AnchroContacterAdmin.setVisible(false);
         ObservableList<String> listeVille = FXCollections.observableArrayList(
         "Tunis","Sfax"
         );
         ville.setItems(listeVille);
         ReadRSS rss = new ReadRSS();
       //  System.out.println(rss.readRss("https://bonnenouvelle.fr/spip.php?page=backend"));
+      jtext = new Text(10 , 50, "this");
+      
       jtext.setText(rss.readRss("https://bonnenouvelle.fr/spip.php?page=backend"));
-       // jtext.setText("aaaaaaaaaaaaa eeeeeeeeeeeeeeee ijijf afoazufh zaopfzapoifhaozifhaozifh ozafh aozfhazoifhp azfhaz faizof haozi oooooooooooooooooooooooo kkkkkkkkkkkkkkkkkkkk jjjjjjjjjjjjjjjj ,,,,,,,,");
-       
+     //   jtext.setText("aaaaaaaaaaaaa eeeeeeeeeeeeeeee ijijf afoazufh zaopfzapoifhaozifhaozifh ozafh aozfhazoifhp azfhaz faizof haozi oooooooooooooooooooooooo kkkkkkkkkkkkkkkkkkkk jjjjjjjjjjjjjjjj ,,,,,,,,");
+       //VBox root = new VBox(jtext);
+      // jtext.setWrappingWidth(200);
        jtext.setTextOrigin(VPos.TOP);
        
         
@@ -167,7 +192,7 @@ public class InterfaceClientController implements Initializable {
        // jtext.setFont(Font.font(24));
         double sceneWidth = paneflux.getWidth();
     double msgWidth = jtext.getLayoutBounds().getWidth();
-
+      
     KeyValue initKeyValue = new KeyValue(jtext.translateXProperty(), sceneWidth);
     KeyFrame initFrame = new KeyFrame(Duration.ZERO, initKeyValue);
 
@@ -377,10 +402,38 @@ public class InterfaceClientController implements Initializable {
             }
             else 
             {
+                String code =  serviceMail.generateRandomString();
+                String to = servClient.getInfoClient(User.uName).getEmail();
+                String subject = "Confirmation d'inscription";
+                String message =  "Voici le code de confirmation de changement mail "+ code + "  Veillez saisir votre code pour confirmer le changement" ;
+                String usermail = "pi.dev.esrpit2017@gmail.com";
+                String passmail = "aZERTY123";
+                 Mailing.send(to,subject, message, usermail, passmail);
+//                TextInputDialog dialog = new TextInputDialog("");
+//                dialog.setTitle("Confirmez votre inscription");
+//                dialog.setHeaderText("Un mail vous a été envoyer où vous trouvez le code");
+//                dialog.setContentText("Entrez votre code de confirmation:");
+//                Optional<String> result = dialog.showAndWait();
+//                if (result.get().equals(code)){
+//                    System.out.println(result.get());
+//                        if (result.get().equals(code))
+//                        {
+                                if (verifconfirMail(code)==true)
+                                {
+                                    
                 Client client = new Client(EmailActuelle.getText());
                 servClient.updateMailClient(client, User.uName);
                 anchorModif.setVisible(false);
                 ServiceNotification.showNotif("Operation effectué", "Votre email est bien à jour");
+            
+                                    
+                                }
+                
+                
+                
+                
+                
+                
             }
             
         }
@@ -492,7 +545,57 @@ public class InterfaceClientController implements Initializable {
            }
     
    
-    
+     public boolean verifconfirMail(String code)
+    {
+        TextInputDialog dialog = new TextInputDialog("");
+                dialog.setTitle("Confirmez votre Changement de mail");
+                dialog.setHeaderText("Un mail vous a été envoyer où vous trouvez le code");
+                dialog.setContentText("Entrez votre code de confirmation:");
+                Optional<String> result = dialog.showAndWait();
+                if (result.get().equals(code)){
+                    
+                        if (result.get().equals(code))
+                        {
+                            return true;
+                        }
+                }
+                else
+                {
+                    return verifconfirMail(code);
+                }
+                return false;
+    }
+
+    @FXML
+    private void ClickContactAdmin(MouseEvent event) {
+        anchorModif.setVisible(false);
+        AnchroContacterAdmin.setVisible(true);
+        
+    }
+
+    @FXML
+    private void ajouterReclamationClick(MouseEvent event) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+         
+        if (Description.getText().equals(""))
+        {
+            alert.setTitle("Attention");
+                            alert.setHeaderText("Echec");
+                            alert.setContentText("Veillez saisir votre description de reclamation");
+                            alert.show();
+                            numeroTel.requestFocus();
+                           
+        }
+         else
+         {
+        ContacterAdmin cont = new ContacterAdmin(Description.getText(), User.uName, dateNow.selectDate(), 0, 0);
+        contact.InsererMsg(cont);
+        ServiceNotification.showNotif("Operation effectué", "Votre reclamation est bien envoyée");
+        Description.setText("");
+        AnchroContacterAdmin.setVisible(false);
+         }
+    }
+
 
 
     
