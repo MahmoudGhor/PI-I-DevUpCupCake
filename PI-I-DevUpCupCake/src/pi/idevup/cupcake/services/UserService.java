@@ -388,5 +388,45 @@ public class UserService {
         return false;
     
     }
+        public void changepassword(String s1,String numtel) {
+        try {
+            String requete = "update user set password=? where phone=?";
+            PreparedStatement pst = connection.prepareStatement(requete);
+            pst.setString(1, s1);
+            pst.setString(2,numtel);
+            pst.executeUpdate();
+            System.out.println("Modification effectué avec succés");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+                public User findByname(String s) {
+        User user = null;
+        String req = "select * from user where username =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user = new User(
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("town"),
+                        resultSet.getString("picture"),
+                        resultSet.getString("address"),
+                        resultSet.getString("facebook"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
 
 }
