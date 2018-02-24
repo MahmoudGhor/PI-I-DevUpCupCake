@@ -27,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 
 import javafx.scene.Scene;
@@ -45,6 +46,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.connectionBD.Session;
 import pi.idevup.cupcake.entities.User;
 import pi.idevup.cupcake.services.UserService;
@@ -221,6 +223,13 @@ public class SignInController implements Initializable {
                 System.out.println("hello Admin");
                 //username.getScene().getWindow().hide();
                 loadWindow(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLAdmin.fxml"), "Dashboard", null);
+                Notifications n = Notifications.create()
+                        .title("Bienvenue")
+                        .text("Vous étes connecté en tant que Administrateur!")
+                        .graphic(null)
+                        .position(Pos.TOP_CENTER)
+                        .hideAfter(Duration.seconds(5));
+                n.showInformation();
                 /*Session.LoggedUser = (Session.iuserService.findByLogin1(login.getText()));
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceAdmin.fxml"));
                 Parent root = loader.load();
