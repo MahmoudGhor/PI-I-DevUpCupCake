@@ -465,12 +465,6 @@ public class FXMLCrudAdminController implements Initializable {
         }
         Clearfields();
         AdminList();
-        try {
-            stat();
-        } catch (Exception e) {
-
-        }
-        PieChart.getData().addAll(data);
     }
 
     @FXML
@@ -487,12 +481,6 @@ public class FXMLCrudAdminController implements Initializable {
         }
 
         AdminList();
-        try {
-            stat();
-        } catch (Exception e) {
-
-        }
-        PieChart.getData().addAll(data);
     }
 
     @FXML
