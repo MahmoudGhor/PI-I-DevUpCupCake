@@ -221,7 +221,7 @@ public class SignInController implements Initializable {
             System.out.println(p);
             if (us.Gettype(uname).equals("a:1{i:0;s:10:\"ROLE_ADMIN\";}")) {
                 System.out.println("hello Admin");
-                //username.getScene().getWindow().hide();
+                Session.LoggedUser = (Session.iuserService.findByname(uname));
                 loadWindow(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLAdmin.fxml"), "Dashboard", null);
                 username.getScene().getWindow().hide();
                 Notifications n = Notifications.create()
@@ -231,15 +231,9 @@ public class SignInController implements Initializable {
                         .position(Pos.TOP_CENTER)
                         .hideAfter(Duration.seconds(5));
                 n.showInformation();
-                /*Session.LoggedUser = (Session.iuserService.findByLogin1(login.getText()));
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("InterfaceAdmin.fxml"));
-                Parent root = loader.load();
-                ancor.getScene().setRoot(root);*/
-
             }
             if (us.Gettype(uname).equals("a:1{i:0;s:10:\"ROLE_CLIENT\";}")) {
-                // Session.LoggedUser = (Session.iuserService.UserByLogin(login.getText()));
-                // System.out.println(Session.LoggedUser.getLastname());
+                Session.LoggedUser = (Session.iuserService.findByname(uname));
                 User.uName = uname;
                 System.out.println(User.uName);
                 System.out.println("hello Cl");
@@ -249,6 +243,7 @@ public class SignInController implements Initializable {
             }
             if ((us.Gettype(uname)).equals("a:1{i:0;s:10:\"ROLE_PAST\";}")) {
                 System.out.println("hello Pastry");
+                Session.LoggedUser = (Session.iuserService.findByname(uname));
                 username.getScene().getWindow().hide();
                 loadWindow(getClass().getResource("/Views/FXMLPasty.fxml"), "Patiser", null);
 
