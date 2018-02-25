@@ -47,6 +47,8 @@ public class FXMLAdminController implements Initializable {
     private JFXButton btnRecipe;
     @FXML
     private JFXButton btnAdmin;
+    @FXML
+    private JFXButton logoutB;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -109,6 +111,11 @@ public class FXMLAdminController implements Initializable {
     @FXML
     private void switchAdmin(ActionEvent event) throws IOException {
         setNode(FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLCrudAdmin.fxml")));
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        System.exit(0);
     }
 
 
