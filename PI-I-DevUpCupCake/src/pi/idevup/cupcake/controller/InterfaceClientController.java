@@ -43,6 +43,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
@@ -64,6 +66,7 @@ import org.controlsfx.control.Notifications;
 import pi.idevup.cupcake.entities.Client;
 import pi.idevup.cupcake.entities.ContacterAdmin;
 import pi.idevup.cupcake.entities.Mailing;
+import pi.idevup.cupcake.entities.Patissier;
 import pi.idevup.cupcake.entities.User;
 import pi.idevup.cupcake.services.ServiceClientBd;
 import pi.idevup.cupcake.services.ServiceContactAdmin;
@@ -158,6 +161,22 @@ public class InterfaceClientController implements Initializable {
     private JFXTextArea Description;
     @FXML
     private JFXButton buttonAjouter;
+    @FXML
+    private AnchorPane anchorListePatissier;
+    @FXML
+    private TableColumn<?, ?> pastyName;
+    @FXML
+    private TableColumn<?, ?> villec;
+    @FXML
+    private TableColumn<?, ?> servicesc;
+    @FXML
+    private TableColumn<?, ?> SpecialtyC;
+    @FXML
+    private TableColumn<?, ?> paymentC;
+    @FXML
+    private JFXButton ButtonListePatissier;
+    @FXML
+    private TableView<Patissier> tablePasty;
 
     
     
@@ -172,6 +191,7 @@ public class InterfaceClientController implements Initializable {
         // TODO
         anchorModif.setVisible(false);
         AnchroContacterAdmin.setVisible(false);
+        anchorListePatissier.setVisible(false);
         ObservableList<String> listeVille = FXCollections.observableArrayList(
         "Tunis","Sfax"
         );
@@ -260,6 +280,7 @@ public class InterfaceClientController implements Initializable {
         showInformationPersonnelle.setVisible(true);
         anchorInformationLieAuCompte.setVisible(false);
         anchorInformationPersonnelle.setVisible(false);
+        AnchroContacterAdmin.setVisible(false);
         
     }
 
@@ -570,6 +591,9 @@ public class InterfaceClientController implements Initializable {
     private void ClickContactAdmin(MouseEvent event) {
         anchorModif.setVisible(false);
         AnchroContacterAdmin.setVisible(true);
+        anchorInformationLieAuCompte.setVisible(false);
+        anchorInformationPersonnelle.setVisible(false);
+        
         
     }
 
@@ -595,6 +619,17 @@ public class InterfaceClientController implements Initializable {
         AnchroContacterAdmin.setVisible(false);
          }
     }
+
+    @FXML
+    private void ShowListPatissier(MouseEvent event) {
+        anchorInformationLieAuCompte.setVisible(false);
+        AnchroContacterAdmin.setVisible(false);
+        anchorInformationPersonnelle.setVisible(false);
+        anchorModif.setVisible(false);
+        anchorListePatissier.setVisible(true);
+        System.out.println("aa");
+    }
+    
 
 
 
