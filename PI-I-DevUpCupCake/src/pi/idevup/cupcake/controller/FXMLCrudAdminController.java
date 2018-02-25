@@ -479,7 +479,6 @@ public class FXMLCrudAdminController implements Initializable {
             new UserService().removeAdmin(users.get(0).getId());
             System.out.println(users.get(0).getId());
         }
-
         AdminList();
     }
 

@@ -85,12 +85,12 @@ public class FXMLAdminController implements Initializable {
 
     @FXML
     private void switchInbox(ActionEvent event) throws IOException {
-        setNode(FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLtest.fxml")));
+        setNode(FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLInbox.fxml")));
     }
 
     @FXML
     private void switchClient(ActionEvent event) throws IOException {
-        setNode(FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLHome.fxml")));
+        setNode(FXMLLoader.load(getClass().getResource("/pi/idevup/cupcake/GUI/FXMLCRUDClient.fxml")));
     }
 
     @FXML

@@ -76,7 +76,8 @@ public class User {
         this.address = address;
         this.facebook = facebook;
     }
-        public User(int id, String username, String email, String password, int enabled, String firstname, String lastname) {
+
+    public User(int id, String username, String email, String password, int enabled, String firstname, String lastname) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -84,6 +85,21 @@ public class User {
         this.enabled = enabled;
         this.firstname = firstname;
         this.lastname = lastname;
+    }
+
+    public User(int id, String username, String email, String password, int enabled, String firstname, String lastname,String phone, String town, String picture, String address, String facebook) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phone=phone;
+        this.town = town;
+        this.picture=picture;
+        this.address= address;
+        this.facebook=facebook;
     }
 
     public User(String email, String firstname, String lastname, String phone, String town, String address, String postalcode, String facebook) {
@@ -96,7 +112,7 @@ public class User {
         this.postalcode = postalcode;
         this.facebook = facebook;
     }
-    
+
     public User(String firstname, String lastname, String phone, String town, String address, String postalcode, String facebook) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -110,9 +126,6 @@ public class User {
     public User(String email) {
         this.email = email;
     }
-    
-    
-        
 
     public String getUsername() {
         return username;

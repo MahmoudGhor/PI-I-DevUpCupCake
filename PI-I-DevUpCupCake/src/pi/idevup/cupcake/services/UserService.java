@@ -163,7 +163,7 @@ public class UserService {
 
     public List<User> getClientAll() {
         List<User> user = new ArrayList<>();
-        String req = "select * from users";
+        String req = "select * from user where roles= 'a:1{i:0;s:10:\"ROLE_CLIENT\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -174,6 +174,7 @@ public class UserService {
                         resultSet.getString("username"),
                         resultSet.getString("email"),
                         resultSet.getString("password"),
+                        resultSet.getInt("enabled"),
                         resultSet.getString("firstname"),
                         resultSet.getString("lastname"),
                         resultSet.getString("phone"),
@@ -192,11 +193,9 @@ public class UserService {
 
     public void remove(Integer r) {
         try {
-            String requete = "delete from users where id_user=?";
+            String requete = "delete from user where id=?";
             PreparedStatement ps = connection.prepareStatement(requete);
-
             ps.setInt(1, r);
-
             ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

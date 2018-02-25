@@ -163,7 +163,7 @@ public class SignInController implements Initializable {
             if (parentStage != null) {
                 stage = parentStage;
             } else {
-                stage = new Stage(StageStyle.DECORATED);
+                stage = new Stage(StageStyle.UNDECORATED);
             }
             stage.setTitle(title);
             stage.setScene(new Scene(parent));
@@ -239,7 +239,6 @@ public class SignInController implements Initializable {
                 System.out.println("hello Cl");
                 username.getScene().getWindow().hide();
                 loadWindow(getClass().getResource("/pi/idevup/cupcake/GUI/interfaceClient.fxml"), "Client", null);
-
             }
             if ((us.Gettype(uname)).equals("a:1{i:0;s:10:\"ROLE_PAST\";}")) {
                 System.out.println("hello Pastry");
